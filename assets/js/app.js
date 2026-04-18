@@ -192,11 +192,11 @@
   }
 
   // ---------- Blog filters ----------
-  var chips = document.querySelectorAll('.filter-chip');
-  if (chips.length) {
-    chips.forEach(function (chip) {
+  var blogChips = document.querySelectorAll('.filters .filter-chip');
+  if (blogChips.length) {
+    blogChips.forEach(function (chip) {
       chip.addEventListener('click', function () {
-        chips.forEach(function (c) { c.classList.remove('active'); });
+        blogChips.forEach(function (c) { c.classList.remove('active'); });
         chip.classList.add('active');
         var cat = chip.getAttribute('data-filter');
         document.querySelectorAll('.blog-list .blog-card').forEach(function (card) {
@@ -208,6 +208,110 @@
         });
       });
     });
+  }
+
+  // ---------- FAQ ----------
+  var faqList = document.getElementById('faq-list');
+  if (faqList && window.TAILANDESITA_FAQ) {
+    var state = { cat: 'all', q: '' };
+
+    function renderFaq() {
+      var q = state.q.trim().toLowerCase();
+      var items = window.TAILANDESITA_FAQ.filter(function (f) {
+        if (state.cat !== 'all' && f.categoria !== state.cat) return false;
+        if (!q) return true;
+        var haystack = (f.pregunta + ' ' + f.respuesta + ' ' + f.respuestaWhatsApp).toLowerCase();
+        return haystack.indexOf(q) !== -1;
+      });
+
+      faqList.innerHTML = '';
+      items.forEach(function (f) {
+        var details = document.createElement('details');
+        details.className = 'faq-item';
+        details.dataset.id = f.id;
+        details.dataset.cat = f.categoria;
+        var summary = document.createElement('summary');
+        summary.innerHTML = '<span class="faq-q">' + f.pregunta + '</span><span class="faq-toggle-icon" aria-hidden="true"></span>';
+        details.appendChild(summary);
+
+        var body = document.createElement('div');
+        body.className = 'faq-body';
+        body.innerHTML = f.respuesta +
+          '<div class="faq-actions">' +
+          '<button type="button" class="btn btn-copy" data-copy-id="' + f.id + '">' +
+          '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
+          '<span>Copiar para WhatsApp</span>' +
+          '</button>' +
+          '<a class="btn btn-ghost btn-sm" href="https://wa.me/66000000000" target="_blank" rel="noopener">Abrir WhatsApp</a>' +
+          '</div>' +
+          '<p class="faq-toast" hidden>¡Copiado! Pégalo en WhatsApp.</p>';
+        details.appendChild(body);
+        faqList.appendChild(details);
+      });
+
+      var empty = document.getElementById('faq-empty');
+      if (empty) empty.hidden = items.length !== 0;
+    }
+
+    faqList.addEventListener('click', function (e) {
+      var btn = e.target.closest('.btn-copy');
+      if (!btn) return;
+      var id = btn.getAttribute('data-copy-id');
+      var item = window.TAILANDESITA_FAQ.find(function (f) { return f.id === id; });
+      if (!item) return;
+      var toast = btn.closest('.faq-body').querySelector('.faq-toast');
+      var doneOk = function () {
+        btn.classList.add('is-done');
+        var label = btn.querySelector('span');
+        var old = label.textContent;
+        label.textContent = '¡Copiado!';
+        if (toast) { toast.hidden = false; }
+        setTimeout(function () {
+          btn.classList.remove('is-done');
+          label.textContent = old;
+          if (toast) toast.hidden = true;
+        }, 2400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(item.respuestaWhatsApp).then(doneOk).catch(function () {
+          fallbackCopy(item.respuestaWhatsApp); doneOk();
+        });
+      } else {
+        fallbackCopy(item.respuestaWhatsApp); doneOk();
+      }
+    });
+
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
+    var faqChips = document.querySelectorAll('.faq-cats .filter-chip');
+    faqChips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        faqChips.forEach(function (c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+        state.cat = chip.getAttribute('data-cat');
+        renderFaq();
+      });
+    });
+
+    var search = document.getElementById('faq-search-input');
+    if (search) {
+      search.addEventListener('input', function () {
+        state.q = search.value;
+        renderFaq();
+      });
+    }
+
+    renderFaq();
   }
 
   // ---------- Prefill contact form from ?tour=..&fecha=..&personas=.. ----------
