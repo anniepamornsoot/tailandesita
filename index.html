@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailandesita Travel Co., Ltd. — Tours personalizados por Tailandia</title>
+  <meta name="description" content="Tailandesita es una agencia de viajes en Tailandia dirigida por Esmeranda. Descubre Bangkok, Phuket, Chiang Mai, Ayutthaya y Kanchanaburi con tours a medida en español." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-sun" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="32" height="32"><g fill="#FF5900"><circle cx="20" cy="24" r="7"/><rect x="18" y="6" width="4" height="8" rx="2"/><rect x="6" y="22" width="8" height="4" rx="2"/><rect x="26" y="22" width="8" height="4" rx="2"/><rect x="8" y="10" width="4" height="8" rx="2" transform="rotate(-40 10 14)"/><rect x="28" y="10" width="4" height="8" rx="2" transform="rotate(40 30 14)"/></g></svg>
+        </span>
+        <span class="brand-text">
+          <strong>TAILANDESITA</strong>
+          <small>Travel Co., Ltd.</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="tours.html">Tours</a>
+        <a href="about.html">Sobre Esmeranda</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contacto</a>
+      </nav>
+      <a href="contact.html" class="btn btn-primary btn-nav">Reservar</a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Agencia de viajes en Tailandia · En español</span>
+          <h1>Descubre la Tailandia que <em>solo un local te enseña</em>.</h1>
+          <p class="lead">Tours privados y grupos reducidos por Bangkok, Phuket, Chiang Mai, Ayutthaya y Kanchanaburi. Diseñados personalmente por Esmeranda para hispanohablantes que quieren vivir Tailandia de verdad.</p>
+          <div class="hero-ctas">
+            <a href="#buscar" class="btn btn-primary">Buscar mi tour</a>
+            <a href="about.html" class="btn btn-ghost">Conoce a Esmeranda</a>
+          </div>
+          <ul class="hero-stats">
+            <li><strong>5</strong><span>ciudades clave</span></li>
+            <li><strong>+800</strong><span>viajeros felices</span></li>
+            <li><strong>100%</strong><span>en español</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="buscar" class="search-section">
+      <div class="container">
+        <div class="search-card">
+          <header class="search-head">
+            <h2>Encuentra tu tour ideal</h2>
+            <p>Dinos cuándo viajas, con cuántas personas y por cuántos días. Te sugerimos los mejores programas.</p>
+          </header>
+          <form id="tour-search" class="search-form" autocomplete="off">
+            <label>
+              <span>Destino</span>
+              <select name="destino">
+                <option value="">Cualquier destino</option>
+                <option value="bangkok">Bangkok</option>
+                <option value="phuket">Phuket</option>
+                <option value="chiang-mai">Chiang Mai</option>
+                <option value="ayutthaya">Ayutthaya</option>
+                <option value="kanchanaburi">Kanchanaburi</option>
+              </select>
+            </label>
+            <label>
+              <span>Fecha de viaje</span>
+              <input type="date" name="fecha" />
+            </label>
+            <label>
+              <span>Personas</span>
+              <input type="number" name="personas" min="1" max="30" value="2" />
+            </label>
+            <label>
+              <span>Duración</span>
+              <select name="duracion">
+                <option value="">Cualquiera</option>
+                <option value="short">1–3 días</option>
+                <option value="mid">4–7 días</option>
+                <option value="long">8+ días</option>
+              </select>
+            </label>
+            <button type="submit" class="btn btn-primary btn-search">Sugerir tours</button>
+          </form>
+          <p id="search-summary" class="search-summary" aria-live="polite"></p>
+        </div>
+
+        <div class="tours-grid" id="tours-grid"></div>
+        <div class="tours-empty" id="tours-empty" hidden>
+          <p>No encontramos un tour exacto, pero Esmeranda puede diseñar uno a tu medida.</p>
+          <a class="btn btn-primary" href="contact.html">Pedir tour a medida</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-preview">
+      <div class="container about-grid">
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1509233725247-49e657c54213?auto=format&fit=crop&w=900&q=80" alt="Retrato de viajera frente a un templo tailandés" />
+          <span class="about-badge">Hola, soy Esmeranda</span>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">El toque humano</span>
+          <h2>Tailandia, contada por alguien que la vive cada día.</h2>
+          <p>Soy Esmeranda, CEO y guía principal de Tailandesita. Llegué a Bangkok hace más de una década siguiendo el aroma del curry y la curiosidad por una cultura que no paraba de sorprenderme. Desde entonces, diseño viajes para personas que, como tú, quieren algo más que una foto frente al Gran Palacio.</p>
+          <p>Cada itinerario es fruto de años conociendo a monjes en Chiang Mai, pescadores en Phuket y abuelas que cocinan el mejor pad thai de Ayutthaya. Mi misión es que te sientas en casa en un lugar totalmente nuevo.</p>
+          <a href="about.html" class="btn btn-ghost">Leer mi historia completa</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="destinations">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">Nuestros destinos</span>
+          <h2>Cinco rincones que te van a enamorar</h2>
+        </header>
+        <div class="dest-grid">
+          <a class="dest-card" href="tours.html#bangkok" style="--img:url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80')">
+            <h3>Bangkok</h3>
+            <p>La capital que nunca duerme: templos dorados, mercados flotantes y rooftops.</p>
+          </a>
+          <a class="dest-card" href="tours.html#phuket" style="--img:url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80')">
+            <h3>Phuket</h3>
+            <p>Islas de postal, aguas turquesas y atardeceres que paran el tiempo.</p>
+          </a>
+          <a class="dest-card" href="tours.html#chiang-mai" style="--img:url('https://images.unsplash.com/photo-1598935898639-81586f7d2129?auto=format&fit=crop&w=900&q=80')">
+            <h3>Chiang Mai</h3>
+            <p>Montañas, elefantes rescatados y la Tailandia más espiritual.</p>
+          </a>
+          <a class="dest-card" href="tours.html#ayutthaya" style="--img:url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80')">
+            <h3>Ayutthaya</h3>
+            <p>La antigua capital, con ruinas milenarias y templos entre raíces.</p>
+          </a>
+          <a class="dest-card wide" href="tours.html#kanchanaburi" style="--img:url('https://images.unsplash.com/photo-1563492065-1a3ec2c4f8fc?auto=format&fit=crop&w=1400&q=80')">
+            <h3>Kanchanaburi</h3>
+            <p>Selva, cascadas Erawan y el histórico puente sobre el río Kwai.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">Viajeros felices</span>
+          <h2>Lo que dicen de Esmeranda y su equipo</h2>
+        </header>
+        <div class="quote-grid">
+          <blockquote>
+            <p>“Esmeranda nos armó un viaje a medida para nuestra luna de miel. Cada detalle pensado, desde el transporte hasta la cena secreta en Chiang Mai.”</p>
+            <footer>— Lucía y Javier, Madrid</footer>
+          </blockquote>
+          <blockquote>
+            <p>“Viajamos en familia con dos niños pequeños. Todo en español, todo resuelto. Nos sentimos acompañados en cada paso.”</p>
+            <footer>— Familia Ortega, Ciudad de México</footer>
+          </blockquote>
+          <blockquote>
+            <p>“La experiencia en Kanchanaburi fue lo mejor del año. Guías auténticos, sin turistas, con historias que no están en ninguna guía.”</p>
+            <footer>— Paula, Buenos Aires</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-preview">
+      <div class="container">
+        <header class="section-head between">
+          <div>
+            <span class="eyebrow">Blog Tailandesita</span>
+            <h2>Inspírate antes de viajar</h2>
+          </div>
+          <a href="blog.html" class="btn btn-ghost">Ver todos los artículos</a>
+        </header>
+        <div class="blog-grid">
+          <a class="blog-card" href="blog.html#bangkok-en-48h">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Guía</span>
+              <h3>Bangkok en 48 horas: lo imprescindible sin estrés</h3>
+              <p>La ruta que recomiendo a quienes solo tienen dos días en la capital.</p>
+            </div>
+          </a>
+          <a class="blog-card" href="blog.html#comida-callejera">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1572454591674-2739f30d2f2d?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Gastronomía</span>
+              <h3>10 platos de comida callejera que debes probar</h3>
+              <p>Del pad thai auténtico al khao soi del norte: tu hoja de ruta gastronómica.</p>
+            </div>
+          </a>
+          <a class="blog-card" href="blog.html#elefantes-eticos">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1503656142023-618e7d1f9465?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Viajar con sentido</span>
+              <h3>Santuarios éticos de elefantes en Chiang Mai</h3>
+              <p>Cómo elegir un santuario responsable y disfrutar sin dañar.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-inner">
+        <h2>¿Lista para tu viaje a Tailandia?</h2>
+        <p>Cuéntanos tus fechas y sueños. Te responderemos en menos de 24 horas con una propuesta personal.</p>
+        <a href="contact.html" class="btn btn-light">Empezar a planificar</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand brand-footer">
+          <span class="brand-sun" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="28" height="28"><g fill="#F9EFE1"><circle cx="20" cy="24" r="7"/><rect x="18" y="6" width="4" height="8" rx="2"/><rect x="6" y="22" width="8" height="4" rx="2"/><rect x="26" y="22" width="8" height="4" rx="2"/><rect x="8" y="10" width="4" height="8" rx="2" transform="rotate(-40 10 14)"/><rect x="28" y="10" width="4" height="8" rx="2" transform="rotate(40 30 14)"/></g></svg>
+          </span>
+          <span class="brand-text">
+            <strong>TAILANDESITA</strong>
+            <small>Travel Co., Ltd.</small>
+          </span>
+        </div>
+        <p class="foot-about">Agencia boutique en Tailandia especializada en viajes en español, fundada por Esmeranda. Diseñamos experiencias auténticas en Bangkok, Phuket, Chiang Mai, Ayutthaya y Kanchanaburi.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="tours.html">Tours</a></li>
+          <li><a href="about.html">Sobre Esmeranda</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Destinos</h4>
+        <ul>
+          <li><a href="tours.html#bangkok">Bangkok</a></li>
+          <li><a href="tours.html#phuket">Phuket</a></li>
+          <li><a href="tours.html#chiang-mai">Chiang Mai</a></li>
+          <li><a href="tours.html#ayutthaya">Ayutthaya</a></li>
+          <li><a href="tours.html#kanchanaburi">Kanchanaburi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Sukhumvit 21, Bangkok, Tailandia</li>
+          <li><a href="mailto:hola@tailandesita.com">hola@tailandesita.com</a></li>
+          <li><a href="https://wa.me/66000000000">WhatsApp +66 000 000 000</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container foot-bottom">
+      <small>© <span id="year"></span> Tailandesita Travel Co., Ltd. Todos los derechos reservados.</small>
+      <small>Diseñado con cariño desde Bangkok.</small>
+    </div>
+  </footer>
+
+  <script src="assets/js/tours-data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

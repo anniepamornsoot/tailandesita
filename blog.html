@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Tailandesita Travel</title>
+  <meta name="description" content="Guías, consejos y relatos sobre Tailandia escritos por Esmeranda. Inspiración para viajar a Bangkok, Chiang Mai, Phuket y más." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">
+        <span class="brand-sun" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="32" height="32"><g fill="#FF5900"><circle cx="20" cy="24" r="7"/><rect x="18" y="6" width="4" height="8" rx="2"/><rect x="6" y="22" width="8" height="4" rx="2"/><rect x="26" y="22" width="8" height="4" rx="2"/><rect x="8" y="10" width="4" height="8" rx="2" transform="rotate(-40 10 14)"/><rect x="28" y="10" width="4" height="8" rx="2" transform="rotate(40 30 14)"/></g></svg>
+        </span>
+        <span class="brand-text"><strong>TAILANDESITA</strong><small>Travel Co., Ltd.</small></span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Inicio</a>
+        <a href="tours.html">Tours</a>
+        <a href="about.html">Sobre Esmeranda</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="contact.html">Contacto</a>
+      </nav>
+      <a href="contact.html" class="btn btn-primary btn-nav">Reservar</a>
+      <button class="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Blog Tailandesita</span>
+        <h1>Historias y guías para enamorarte de Tailandia</h1>
+        <p>Recetas, itinerarios, consejos prácticos y cultura local. Todo lo que me hubiese gustado saber antes de mi primer viaje a Tailandia.</p>
+      </div>
+    </section>
+
+    <section class="blog-index">
+      <div class="container">
+        <div class="filters" role="tablist" aria-label="Categorías del blog">
+          <button class="filter-chip active" data-filter="all">Todo</button>
+          <button class="filter-chip" data-filter="guia">Guías</button>
+          <button class="filter-chip" data-filter="gastronomia">Gastronomía</button>
+          <button class="filter-chip" data-filter="cultura">Cultura</button>
+          <button class="filter-chip" data-filter="consejos">Consejos</button>
+        </div>
+
+        <div class="blog-grid blog-list">
+          <article class="blog-card" id="bangkok-en-48h" data-cat="guia">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Guía</span>
+              <h2>Bangkok en 48 horas: lo imprescindible sin estrés</h2>
+              <p>Wat Pho al amanecer, mercado de Chatuchak al mediodía y rooftop con vistas al Chao Phraya al caer la noche. Mi ruta favorita para quienes solo tienen dos días.</p>
+              <span class="blog-meta">5 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" id="comida-callejera" data-cat="gastronomia">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1572454591674-2739f30d2f2d?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Gastronomía</span>
+              <h2>10 platos de comida callejera que debes probar</h2>
+              <p>Del pad thai auténtico al khao soi del norte, pasando por el mango sticky rice. Tu hoja de ruta gastronómica para no comer lo mismo dos veces.</p>
+              <span class="blog-meta">7 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" id="elefantes-eticos" data-cat="consejos">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1503656142023-618e7d1f9465?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Consejos</span>
+              <h2>Santuarios éticos de elefantes en Chiang Mai</h2>
+              <p>Cómo distinguir un santuario responsable de uno que solo busca turistas. Mis recomendaciones personales para vivirlo con respeto.</p>
+              <span class="blog-meta">6 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="cultura">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Cultura</span>
+              <h2>Songkran: cómo vivir el año nuevo tailandés</h2>
+              <p>La batalla de agua más famosa del mundo esconde un rito espiritual precioso. Te cuento cómo disfrutarlo sin perderte su significado.</p>
+              <span class="blog-meta">4 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="guia">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Guía</span>
+              <h2>Ayutthaya en un día desde Bangkok</h2>
+              <p>La antigua capital merece mucho más que una foto rápida. Cómo organizar una excursión en tren o minivan, y qué templos no puedes perderte.</p>
+              <span class="blog-meta">5 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="consejos">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1531123414780-f74242c2b052?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Consejos</span>
+              <h2>Qué meter en la maleta para Tailandia</h2>
+              <p>Clima, códigos de vestimenta en los templos y ese detalle que nadie te cuenta: por qué necesitas calcetines limpios siempre a mano.</p>
+              <span class="blog-meta">4 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="cultura">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Cultura</span>
+              <h2>Las casas de los espíritus: un mundo pequeño con gran significado</h2>
+              <p>Esas casitas coloridas que ves en cada esquina no son decoración. Son una ventana directa al alma espiritual tailandesa.</p>
+              <span class="blog-meta">6 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="gastronomia">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Gastronomía</span>
+              <h2>Cómo pedir comida picante (o no) en tailandés</h2>
+              <p>Las frases mágicas para ajustar el picante al gusto, conseguir que te traigan el menú real y salir del pad thai turístico.</p>
+              <span class="blog-meta">3 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="guia">
+            <div class="blog-img" style="background-image:url('https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="blog-body">
+              <span class="tag">Guía</span>
+              <h2>Phuket más allá de Patong: las playas que amo</h2>
+              <p>Freedom Beach, Ya Nui, Banana Beach… Te llevo a los rincones donde todavía puedes escuchar el mar antes que la fiesta.</p>
+              <span class="blog-meta">5 min de lectura · por Esmeranda</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+        <div>
+          <h2>Historias de Tailandia en tu correo</h2>
+          <p>Una carta al mes, escrita por Esmeranda, con inspiración para tu próximo viaje.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); this.reset(); this.querySelector('button').textContent='¡Apuntada!';">
+          <input type="email" required placeholder="tu@email.com" aria-label="Correo electrónico" />
+          <button type="submit" class="btn btn-primary">Suscribirme</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand brand-footer">
+          <span class="brand-sun" aria-hidden="true">
+            <svg viewBox="0 0 40 40" width="28" height="28"><g fill="#F9EFE1"><circle cx="20" cy="24" r="7"/><rect x="18" y="6" width="4" height="8" rx="2"/><rect x="6" y="22" width="8" height="4" rx="2"/><rect x="26" y="22" width="8" height="4" rx="2"/><rect x="8" y="10" width="4" height="8" rx="2" transform="rotate(-40 10 14)"/><rect x="28" y="10" width="4" height="8" rx="2" transform="rotate(40 30 14)"/></g></svg>
+          </span>
+          <span class="brand-text"><strong>TAILANDESITA</strong><small>Travel Co., Ltd.</small></span>
+        </div>
+        <p class="foot-about">Agencia boutique en Tailandia especializada en viajes en español, fundada por Esmeranda.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul><li><a href="index.html">Inicio</a></li><li><a href="tours.html">Tours</a></li><li><a href="about.html">Sobre Esmeranda</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contacto</a></li></ul>
+      </div>
+      <div>
+        <h4>Destinos</h4>
+        <ul><li><a href="tours.html#bangkok">Bangkok</a></li><li><a href="tours.html#phuket">Phuket</a></li><li><a href="tours.html#chiang-mai">Chiang Mai</a></li><li><a href="tours.html#ayutthaya">Ayutthaya</a></li><li><a href="tours.html#kanchanaburi">Kanchanaburi</a></li></ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul><li>Sukhumvit 21, Bangkok, Tailandia</li><li><a href="mailto:hola@tailandesita.com">hola@tailandesita.com</a></li><li><a href="https://wa.me/66000000000">WhatsApp +66 000 000 000</a></li></ul>
+      </div>
+    </div>
+    <div class="container foot-bottom">
+      <small>© <span id="year"></span> Tailandesita Travel Co., Ltd.</small>
+      <small>Diseñado con cariño desde Bangkok.</small>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
