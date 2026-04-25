@@ -8,6 +8,18 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // ---------- Sticky header scroll state (full-hero pages) ----------
+  if (document.body.classList.contains('has-fullhero')) {
+    var header = document.querySelector('.site-header');
+    var onScroll = function () {
+      if (!header) return;
+      if (window.scrollY > 40) header.classList.add('is-scrolled');
+      else header.classList.remove('is-scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
   // ---------- Mobile nav ----------
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('.site-nav');
@@ -177,8 +189,8 @@
     searchForm.addEventListener('submit', function (e) {
       e.preventDefault();
       renderTours(readFilters(searchForm));
-      var grid = document.getElementById('tours-grid');
-      if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var results = document.getElementById('buscar') || document.getElementById('tours-grid');
+      if (results) results.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     // live filter on destination/duration changes
     ['destino', 'duracion'].forEach(function (name) {
@@ -188,6 +200,31 @@
     window.addEventListener('hashchange', function () {
       applyHashDestination(searchForm);
       renderTours(readFilters(searchForm));
+    });
+  }
+
+  // ---------- Hero search tabs ----------
+  var heroTabs = document.querySelectorAll('.hero-tab');
+  if (heroTabs.length && searchForm) {
+    heroTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var which = tab.getAttribute('data-tab');
+        if (which === 'medida') {
+          location.href = 'contact.html';
+          return;
+        }
+        heroTabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        var duracion = searchForm.querySelector('[name="duracion"]');
+        if (which === 'excursion' && duracion) {
+          duracion.value = 'short';
+          renderTours(readFilters(searchForm));
+        } else if (which === 'tours' && duracion) {
+          duracion.value = '';
+          renderTours(readFilters(searchForm));
+        }
+      });
     });
   }
 
