@@ -152,7 +152,9 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   align-items: center;
   justify-content: flex-end;
   gap: 28px;
-  padding: 14px 24px;
+  max-width: none;
+  width: 100%;
+  padding: 14px 40px;
 }
 .brand { margin-right: auto; }
 .brand {
@@ -261,7 +263,7 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   z-index: 2;
   width: 100%;
   padding-top: 110px;
-  padding-bottom: 240px;
+  padding-bottom: 220px;
 }
 .hero-copy-light h1 { color: #fff; max-width: 720px; }
 .hero-copy-light h1 em {
@@ -292,9 +294,10 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -40px;
+  bottom: 32px;
   z-index: 3;
 }
+.hero-search-wrap > .container { padding: 0 40px; }
 .hero-search-card {
   background: rgba(20, 16, 12, 0.94);
   backdrop-filter: blur(14px);
@@ -388,7 +391,7 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
 
 /* Push the next section below the overlapping search card */
 .search-section-results {
-  padding-top: 90px;
+  padding-top: 64px;
   padding-bottom: 80px;
   background: linear-gradient(180deg, var(--c-cream) 0%, #fff 280px);
 }
