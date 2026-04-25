@@ -203,30 +203,6 @@
     });
   }
 
-  // ---------- Hero search tabs ----------
-  var heroTabs = document.querySelectorAll('.hero-tab');
-  if (heroTabs.length && searchForm) {
-    heroTabs.forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        var which = tab.getAttribute('data-tab');
-        if (which === 'medida') {
-          location.href = 'contact.html';
-          return;
-        }
-        heroTabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        var duracion = searchForm.querySelector('[name="duracion"]');
-        if (which === 'excursion' && duracion) {
-          duracion.value = 'short';
-          renderTours(readFilters(searchForm));
-        } else if (which === 'tours' && duracion) {
-          duracion.value = '';
-          renderTours(readFilters(searchForm));
-        }
-      });
-    });
-  }
 
   // ---------- Blog filters ----------
   var blogChips = document.querySelectorAll('.filters .filter-chip');

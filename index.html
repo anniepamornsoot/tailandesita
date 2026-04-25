@@ -59,20 +59,6 @@
       <div class="hero-search-wrap">
         <div class="container">
           <div class="hero-search-card">
-            <div class="hero-search-tabs" role="tablist" aria-label="Tipo de viaje">
-              <button type="button" class="hero-tab active" data-tab="tours" role="tab" aria-selected="true">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h12"/></svg>
-                Tours
-              </button>
-              <button type="button" class="hero-tab" data-tab="excursion" role="tab" aria-selected="false">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-                Excursión de un día
-              </button>
-              <button type="button" class="hero-tab" data-tab="medida" role="tab" aria-selected="false">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                A medida
-              </button>
-            </div>
             <form id="tour-search" class="hero-search-form" autocomplete="off">
               <label>
                 <span>Destino</span>
@@ -86,7 +72,7 @@
                 </select>
               </label>
               <label>
-                <span>Fecha</span>
+                <span>Fecha de viaje</span>
                 <input type="date" name="fecha" />
               </label>
               <label>
@@ -102,11 +88,9 @@
                   <option value="long">8+ días</option>
                 </select>
               </label>
-              <button type="submit" class="btn btn-primary btn-search">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-                Buscar
-              </button>
+              <button type="submit" class="btn btn-primary btn-search">Sugerir tours</button>
             </form>
+            <p id="search-summary" class="search-summary" aria-live="polite"></p>
           </div>
         </div>
       </div>
@@ -118,7 +102,6 @@
           <span class="eyebrow">Tours sugeridos</span>
           <h2>Programas que pueden encajar contigo</h2>
         </header>
-        <p id="search-summary" class="search-summary" aria-live="polite"></p>
         <div class="tours-grid" id="tours-grid"></div>
         <div class="tours-empty" id="tours-empty" hidden>
           <p>No encontramos un tour exacto, pero Esmeranda puede diseñar uno a tu medida.</p>
