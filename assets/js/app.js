@@ -95,9 +95,17 @@
     card.className = 'tour-card';
     card.dataset.id = tour.id;
 
-    var bookUrl = 'contact.html?tour=' + encodeURIComponent(tour.id) +
-      (filters.fecha ? '&fecha=' + encodeURIComponent(filters.fecha) : '') +
-      (filters.personas ? '&personas=' + encodeURIComponent(filters.personas) : '');
+    var bookUrl;
+    if (tour.pagina) {
+      var qs = [];
+      if (filters.fecha) qs.push('fecha=' + encodeURIComponent(filters.fecha));
+      if (filters.personas) qs.push('personas=' + encodeURIComponent(filters.personas));
+      bookUrl = tour.pagina + (qs.length ? '?' + qs.join('&') : '');
+    } else {
+      bookUrl = 'contact.html?tour=' + encodeURIComponent(tour.id) +
+        (filters.fecha ? '&fecha=' + encodeURIComponent(filters.fecha) : '') +
+        (filters.personas ? '&personas=' + encodeURIComponent(filters.personas) : '');
+    }
 
     var ciudades = (tour.ciudades || []).join(' · ');
     var destinoLabel = DEST_LABEL[tour.destino] || tour.destino;
@@ -325,6 +333,64 @@
     }
 
     renderFaq();
+  }
+
+  // ---------- Lightbox (tour gallery) ----------
+  var lightbox = document.getElementById('tour-lightbox');
+  var lbTriggers = document.querySelectorAll('[data-lightbox]');
+  if (lightbox && lbTriggers.length) {
+    var lbImg = lightbox.querySelector('.lightbox-img');
+    var lbCounter = lightbox.querySelector('.lightbox-counter');
+    var lbClose = lightbox.querySelector('.lightbox-close');
+    var lbPrev = lightbox.querySelector('.lightbox-prev');
+    var lbNext = lightbox.querySelector('.lightbox-next');
+
+    var images = [];
+    lbTriggers.forEach(function (el, i) {
+      images.push(el.getAttribute('data-lightbox'));
+      el.addEventListener('click', function () { openLB(i); });
+    });
+    var current = 0;
+
+    function openLB(i) {
+      current = i;
+      updateLB();
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLB() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    function nextLB() { current = (current + 1) % images.length; updateLB(); }
+    function prevLB() { current = (current - 1 + images.length) % images.length; updateLB(); }
+    function updateLB() {
+      lbImg.src = images[current];
+      if (lbCounter) lbCounter.textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    lbClose && lbClose.addEventListener('click', closeLB);
+    lbPrev && lbPrev.addEventListener('click', prevLB);
+    lbNext && lbNext.addEventListener('click', nextLB);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLB();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowRight') nextLB();
+      if (e.key === 'ArrowLeft') prevLB();
+    });
+  }
+
+  // ---------- Prefill booking/contact forms from ?fecha=..&personas=.. ----------
+  var bookForm = document.getElementById('book-form');
+  if (bookForm && location.search) {
+    var bp = new URLSearchParams(location.search);
+    var bf = bookForm.querySelector('[name="fecha"]');
+    var bp_p = bookForm.querySelector('[name="personas"]');
+    if (bp.get('fecha') && bf) bf.value = bp.get('fecha');
+    if (bp.get('personas') && bp_p) bp_p.value = bp.get('personas');
   }
 
   // ---------- Prefill contact form from ?tour=..&fecha=..&personas=.. ----------
