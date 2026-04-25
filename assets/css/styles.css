@@ -131,6 +131,9 @@ p { margin: 0 0 1em; color: var(--c-ink-soft); }
 /* Transparent header over the full-screen hero on the homepage */
 body.has-fullhero .site-header {
   position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
   background: transparent;
   border-bottom-color: transparent;
   backdrop-filter: none;
