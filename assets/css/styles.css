@@ -1547,14 +1547,6 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   background: #fff;
   box-shadow: 0 18px 40px rgba(255, 89, 0, 0.15);
 }
-.journey-tab.active::before {
-  content: "";
-  position: absolute;
-  top: -2px; left: -2px; right: -2px;
-  height: 4px;
-  background: var(--c-orange);
-  border-radius: 4px 4px 0 0;
-}
 .journey-tab-num {
   display: block;
   font-family: var(--font-serif);
