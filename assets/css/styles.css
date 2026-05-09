@@ -1593,97 +1593,149 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
 .group-card {
   background: #fff;
   border: 1px solid var(--c-line);
-  border-radius: var(--radius);
-  padding: 22px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.group-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.group-card[data-status="full"] { background: var(--c-cream); }
-.group-card[data-status="full"] .group-date { background: rgba(31,26,22,0.08); color: var(--c-muted); }
-.group-card[data-status="full"] .group-date .group-month,
-.group-card[data-status="full"] .group-date .group-days { color: var(--c-ink-soft); }
+.group-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.group-card[data-status="full"] .group-image { filter: saturate(0.65); }
+.group-card[data-status="full"] .group-tag { background: rgba(255, 255, 255, 0.8); color: var(--c-ink-soft); }
 
-.group-date {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  background: var(--c-peach-light);
-  border-radius: 12px;
-  padding: 10px 16px;
-  align-self: flex-start;
+/* Image with title overlay */
+.group-image {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-cream);
 }
-.group-month {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  color: var(--c-orange);
-  text-transform: uppercase;
+.group-image::after {
+  content: "";
+  position: absolute;
+  inset: 35% 0 0 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(20, 16, 12, 0.78) 100%);
+  pointer-events: none;
 }
-.group-days {
-  font-family: var(--font-sans);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--c-orange);
-  line-height: 1;
-  letter-spacing: -0.01em;
-  font-variant-numeric: tabular-nums lining-nums;
-  font-feature-settings: "tnum" 1, "lnum" 1;
+.group-image-overlay {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  right: 22px;
+  z-index: 1;
 }
-.group-year { font-size: 0.78rem; color: var(--c-muted); }
-
+.group-image-overlay h4 {
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  line-height: 1.15;
+  margin: 10px 0 0;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
+}
 .group-tag {
   display: inline-block;
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--c-orange);
-  background: var(--c-peach-light);
-  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 5px 12px;
   border-radius: 999px;
-  margin-bottom: 8px;
+  backdrop-filter: blur(8px);
 }
-.group-body h4 {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  margin: 0 0 4px;
-  color: var(--c-ink);
-}
-.group-cities {
-  margin: 0 0 14px;
-  font-size: 0.92rem;
-  color: var(--c-ink-soft);
-}
-.group-meta {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 0.92rem;
-  color: var(--c-muted);
-}
-.group-meta strong { color: var(--c-ink); margin-right: 4px; }
-.group-meta small { font-size: 0.78rem; color: var(--c-muted); }
 
-.group-foot {
+/* Info row: date block | cities/duration | price */
+.group-card-foot {
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  border-bottom: 1px dashed var(--c-line);
+}
+.group-date-block {
+  background: var(--c-cream);
+  border-radius: 12px;
+  padding: 8px 10px;
+  text-align: center;
+  min-width: 58px;
+  line-height: 1.05;
+}
+.group-date-block .month {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--c-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 3px;
+}
+.group-date-block .day {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--c-ink);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+.group-date-block .weekday {
+  display: block;
+  font-size: 0.6rem;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-top: 1px;
+}
+.group-info { display: flex; flex-direction: column; min-width: 0; }
+.group-info strong {
+  font-size: 0.92rem;
+  color: var(--c-ink);
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.group-info span {
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  margin-top: 3px;
+}
+.group-price { text-align: right; }
+.group-price strong {
+  display: block;
+  color: var(--c-orange);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+}
+.group-price span {
+  font-size: 0.66rem;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Status badge + CTA row */
+.group-status-row {
+  padding: 14px 22px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px dashed var(--c-line);
 }
 .group-status {
   font-size: 0.8rem;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 999px;
 }
 .group-status-available { background: rgba(24, 168, 107, 0.12); color: #18a86b; }
