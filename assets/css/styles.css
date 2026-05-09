@@ -374,11 +374,11 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   font-size: 0.95rem;
 }
 
-/* Push the next section below the overlapping search card */
+/* Tour results section (now sits between about-preview and destinations) */
 .search-section-results {
-  padding-top: 64px;
+  padding-top: 80px;
   padding-bottom: 80px;
-  background: linear-gradient(180deg, var(--c-cream) 0%, #fff 280px);
+  background: var(--c-cream);
 }
 .search-section-results .section-head { margin-bottom: 18px; }
 
