@@ -191,6 +191,7 @@
 
   // ---------- Wire up tour search on pages that have it ----------
   var searchForm = document.getElementById('tour-search');
+  var toursGrid = document.getElementById('tours-grid');
   if (searchForm) {
     applyHashDestination(searchForm);
     renderTours(readFilters(searchForm));
@@ -209,6 +210,10 @@
       applyHashDestination(searchForm);
       renderTours(readFilters(searchForm));
     });
+  } else if (toursGrid) {
+    // Grid is on a page without a search form (e.g. homepage after the
+    // search bar was removed): just render all tours with no filters.
+    renderTours({ destino: '', fecha: '', personas: '', duracion: '' });
   }
 
 

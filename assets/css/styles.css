@@ -286,7 +286,7 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   z-index: 2;
   width: 100%;
   padding-top: 110px;
-  padding-bottom: 220px;
+  padding-bottom: 80px;
 }
 .hero-copy-light h1 { color: #fff; max-width: 720px; }
 .hero-copy-light h1 em {
@@ -2579,8 +2579,8 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   .hero-search-form .btn-search {
     grid-column: 1 / -1;
   }
-  .search-section-results { padding-top: 80px; }
-  .hero-fullscreen-inner { padding-bottom: 320px; }
+  .search-section-results { padding-top: 64px; }
+  .hero-fullscreen-inner { padding-bottom: 64px; }
   .post-grid { grid-template-columns: 1fr; gap: 40px; }
   .post-sidebar { position: static; }
   .journey-tabs { grid-template-columns: 1fr; }
@@ -2615,11 +2615,9 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   .btn-nav { display: none; }
   .nav-toggle { display: block; }
   .hero-fullscreen { min-height: 100svh; height: auto; }
-  .hero-fullscreen-inner { padding-top: 100px; padding-bottom: 420px; }
+  .hero-fullscreen-inner { padding-top: 100px; padding-bottom: 56px; }
   .hero-fullscreen h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
-  .hero-search-card { padding: 22px; }
-  .hero-search-form { grid-template-columns: 1fr; }
-  .search-section-results { padding-top: 60px; }
+  .search-section-results { padding-top: 48px; }
   .group-grid { grid-template-columns: 1fr; }
   .config-wrap { padding: 24px; }
   .config-options-pill { grid-template-columns: repeat(3, 1fr); }
