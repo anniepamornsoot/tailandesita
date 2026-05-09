@@ -554,10 +554,10 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   border-radius: 999px;
 }
 .tour-body {
-  padding: 20px 22px 22px;
+  padding: 32px 26px 26px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   flex: 1;
 }
 .tour-body h3 {
