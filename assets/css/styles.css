@@ -2201,7 +2201,7 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
 }
 
 /* Tour body grid */
-.tour-body { padding: 32px 0 80px; }
+.tour-post-body { padding: 32px 0 80px; }
 .tour-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
