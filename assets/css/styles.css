@@ -2649,4 +2649,133 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   .contact-form .row { grid-template-columns: 1fr; }
   .hero-stats { gap: 20px; }
   .hero { padding-top: 48px; }
+  .departures-table .dep-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px 18px;
+  }
+  .departures-table .dep-action { justify-self: stretch; }
+  .departures-table .dep-action .btn { width: 100%; }
 }
+
+/* ============================================================
+   Departures table (Open period & available seats)
+   Used in tour-program.html — Nordic Visitor inspired layout.
+   ============================================================ */
+.departures-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.departures-table .dep-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1.4fr 1fr auto;
+  align-items: center;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.departures-table .dep-row:hover {
+  border-color: var(--c-peach-light, #f8d6c2);
+  box-shadow: 0 6px 22px rgba(255, 89, 0, 0.07);
+}
+.departures-table .dep-row[data-estado="full"] {
+  background: #faf7f3;
+  opacity: 0.92;
+}
+.dep-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.dep-dates strong {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--c-ink);
+  letter-spacing: -0.005em;
+}
+.dep-dates span {
+  font-size: 0.82rem;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.dep-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.01em;
+  width: max-content;
+}
+.dep-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.dep-status-available {
+  background: rgba(34, 139, 88, 0.10);
+  color: #1f6f48;
+}
+.dep-status-available::before { background: #2aaf6c; }
+.dep-status-last {
+  background: rgba(255, 145, 0, 0.12);
+  color: #a85a00;
+}
+.dep-status-last::before { background: #ff9100; }
+.dep-status-full {
+  background: rgba(102, 102, 102, 0.10);
+  color: #555;
+}
+.dep-status-full::before { background: #777; }
+
+.dep-price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: right;
+}
+.dep-price strong {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--c-orange);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.dep-price span {
+  font-size: 0.75rem;
+  color: var(--c-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.dep-action {
+  justify-self: end;
+}
+.dep-action .btn-sm {
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Per-tour FAQ accordion (re-uses .faq-item visuals)
+   ============================================================ */
+.tour-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+.tour-faq-list .faq-item {
+  background: #fff;
+}
+
