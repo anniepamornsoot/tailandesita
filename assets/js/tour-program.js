@@ -110,13 +110,14 @@
   // ---------- Departures (open period & available seats) ----------
   var depEl = document.getElementById('tour-departures');
   if (depEl && tour.departures) {
+    var tourHref = 'tour-program.html?tour=' + encodeURIComponent(tour.id);
     var rows = tour.departures.map(function (d) {
       var statusClass = 'dep-status dep-status-' + d.estado;
       var actionBtn;
       if (d.estado === 'full') {
-        actionBtn = '<button type="button" class="btn btn-ghost btn-sm dep-cta" data-waitlist="' + d.fechas.replace(/"/g, '&quot;') + '">Lista de espera</button>';
+        actionBtn = '<a class="btn btn-ghost btn-sm dep-cta" href="' + tourHref + '">Lista de espera</a>';
       } else {
-        actionBtn = '<button type="button" class="btn btn-primary btn-sm dep-cta" data-book="' + d.fechas.replace(/"/g, '&quot;') + '" data-price="' + d.precio + '">Reservar plaza →</button>';
+        actionBtn = '<a class="btn btn-primary btn-sm dep-cta" href="' + tourHref + '">Reservar plaza →</a>';
       }
       return '' +
         '<div class="dep-row" data-estado="' + d.estado + '">' +
