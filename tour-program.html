@@ -119,12 +119,70 @@
 
           <aside class="tour-sidebar">
             <div class="sidebar-sticky">
-              <div class="book-card book-card-v2">
-                <span class="book-from">Desde</span>
-                <strong class="book-price" id="book-price">—</strong>
-                <ul class="book-facts" id="book-facts"></ul>
-                <button type="button" class="btn btn-primary book-cta" id="book-cta">Reservar ahora</button>
-                <p class="book-trust" id="book-trust">30% de depósito al reservar · Devolución 100% si nosotros cancelamos · Pago seguro con Stripe</p>
+
+              <div class="booking-widget" id="booking-widget">
+                <header class="bw-header">
+                  <h3 id="bw-title">Reservar</h3>
+                </header>
+
+                <div class="bw-body">
+
+                  <section class="bw-section" aria-label="Viajeros">
+                    <h4 class="bw-section-title">Participantes</h4>
+                    <div class="bw-counter-row" data-counter="adultos">
+                      <div class="bw-counter-label">
+                        <strong>Adultos</strong>
+                        <small>16+ años</small>
+                      </div>
+                      <div class="bw-counter">
+                        <button type="button" class="bw-counter-btn" data-step="-1" aria-label="Quitar adulto">−</button>
+                        <span class="bw-counter-val" data-val>1</span>
+                        <button type="button" class="bw-counter-btn" data-step="1" aria-label="Añadir adulto">+</button>
+                      </div>
+                    </div>
+                    <div class="bw-counter-row" data-counter="adolescentes">
+                      <div class="bw-counter-label">
+                        <strong>Adolescentes</strong>
+                        <small>14 – 15 años</small>
+                      </div>
+                      <div class="bw-counter">
+                        <button type="button" class="bw-counter-btn" data-step="-1" aria-label="Quitar adolescente">−</button>
+                        <span class="bw-counter-val" data-val>0</span>
+                        <button type="button" class="bw-counter-btn" data-step="1" aria-label="Añadir adolescente">+</button>
+                      </div>
+                    </div>
+                    <div class="bw-counter-row" data-counter="ninos">
+                      <div class="bw-counter-label">
+                        <strong>Niños</strong>
+                        <small>5 – 13 años</small>
+                      </div>
+                      <div class="bw-counter">
+                        <button type="button" class="bw-counter-btn" data-step="-1" aria-label="Quitar niño">−</button>
+                        <span class="bw-counter-val" data-val>0</span>
+                        <button type="button" class="bw-counter-btn" data-step="1" aria-label="Añadir niño">+</button>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="bw-section" aria-label="Fecha" id="bw-date-block"></section>
+
+                  <section class="bw-section">
+                    <label class="bw-field">
+                      <span>Nº de socio (opcional)</span>
+                      <input type="text" id="bw-member" placeholder="TLD-2024-XXXX" autocomplete="off" />
+                    </label>
+                  </section>
+
+                  <section class="bw-section">
+                    <h4 class="bw-section-title">Resumen de reserva</h4>
+                    <div class="bw-ticket" id="bw-ticket"></div>
+                  </section>
+
+                  <button type="button" class="btn btn-primary bw-cta" id="bw-cta">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span>Ir al carrito</span>
+                  </button>
+                </div>
               </div>
 
               <a class="whatsapp-pill" href="https://wa.me/66000000000" aria-label="Pregúntanos por WhatsApp">
@@ -152,12 +210,11 @@
     <div class="checkout-card" role="document">
       <button type="button" class="checkout-close" id="checkout-close" aria-label="Cerrar">×</button>
       <header class="checkout-head">
-        <h3 id="checkout-title">Reservar plaza</h3>
+        <h3 id="checkout-title">Pagar reserva</h3>
         <ol class="checkout-progress" id="checkout-progress">
-          <li class="cp-step is-active" data-step="1"><span>1</span><small>Fecha</small></li>
-          <li class="cp-step" data-step="2"><span>2</span><small>Datos</small></li>
-          <li class="cp-step" data-step="3"><span>3</span><small>Pago</small></li>
-          <li class="cp-step" data-step="4"><span>4</span><small>Listo</small></li>
+          <li class="cp-step is-active" data-step="1"><span>1</span><small>Datos</small></li>
+          <li class="cp-step" data-step="2"><span>2</span><small>Pago</small></li>
+          <li class="cp-step" data-step="3"><span>3</span><small>Listo</small></li>
         </ol>
       </header>
       <div class="checkout-body" id="checkout-body"></div>
