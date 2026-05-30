@@ -462,6 +462,11 @@ window.TAILANDESITA_GROUP_TOURS = {
     reseñas: 124,
     precioDesde: 120,
     depositoPct: 30,
+    flexibleDate: true,
+    priceByMonth: {
+      1: 120, 2: 120, 3: 120, 4: 120, 5: 120, 6: 120,
+      7: 120, 8: 120, 9: 130, 10: 130, 11: 140, 12: 150
+    },
     lede: "Una escapada desde Bangkok para descubrir la antigua capital del reino de Siam: ruinas declaradas Patrimonio de la Humanidad, templos entre raíces y un paseo en barca por el río Chao Phraya.",
     gallery: [
       "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1800&q=85",
