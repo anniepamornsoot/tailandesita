@@ -87,7 +87,7 @@ window.TAILANDESITA_TOURS = [
     minPersonas: 1,
     maxPersonas: 12,
     imagen: "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80",
-    pagina: "tour-ayutthaya-1d.html"
+    pagina: "tour-program.html?tour=ayutthaya-1d"
   },
   {
     id: "ayutthaya-historico-2d",
