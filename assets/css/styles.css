@@ -2370,10 +2370,14 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
 
 /* Tour testimonials */
 .tour-testimonials {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  position: relative;
+  overflow: hidden;
   margin-top: 20px;
+}
+.testimonios-track {
+  display: flex;
+  gap: 18px;
+  will-change: transform;
 }
 .tour-testimonials blockquote {
   margin: 0;
@@ -2381,6 +2385,8 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   padding: 22px;
   border-radius: var(--radius);
   border-top: 4px solid var(--c-orange);
+  flex: 0 0 calc((100% - 18px) / 2);
+  box-sizing: border-box;
 }
 .t-stars {
   color: var(--c-orange);
@@ -2600,7 +2606,7 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   }
   .gallery-item-main { grid-row: 1; grid-column: 1 / -1; }
   .tour-includes { grid-template-columns: 1fr; }
-  .tour-testimonials { grid-template-columns: 1fr; }
+  .tour-testimonials blockquote { flex: 0 0 100%; }
   .itinerary li { grid-template-columns: 70px 1fr; gap: 14px; }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid, .contact-grid, .newsletter-inner {
