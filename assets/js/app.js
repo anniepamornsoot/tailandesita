@@ -211,9 +211,16 @@
       renderTours(readFilters(searchForm));
     });
   } else if (toursGrid) {
-    // Grid is on a page without a search form (e.g. homepage after the
-    // search bar was removed): just render all tours with no filters.
-    renderTours({ destino: '', fecha: '', personas: '', duracion: '' });
+    // Grid is on a page without a search form (e.g. the homepage).
+    // The homepage section is now "Excursiones de un día", so we
+    // narrow the list to 1-day tours only.
+    var all = (window.TAILANDESITA_TOURS || []).slice();
+    var dayTrips = all.filter(function (t) { return t.duracionDias === 1; });
+    dayTrips.sort(function (a, b) { return (a.precioDesde || 0) - (b.precioDesde || 0); });
+    toursGrid.innerHTML = '';
+    dayTrips.forEach(function (t) { toursGrid.appendChild(buildCard(t, {})); });
+    var emptyEl = document.getElementById('tours-empty');
+    if (emptyEl) emptyEl.hidden = dayTrips.length !== 0;
   }
 
 
