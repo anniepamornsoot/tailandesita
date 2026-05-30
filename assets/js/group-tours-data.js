@@ -449,5 +449,75 @@ window.TAILANDESITA_GROUP_TOURS = {
       { autor: "Andrés y Camila", origen: "Cartagena · Julio 2025", texto: "Hicimos escala en Bangkok antes de Bali y aprovechamos a tope. Volveremos para la ruta larga." },
       { autor: "Patricia", origen: "Zaragoza · Septiembre 2025", texto: "Como introducción a Tailandia es perfecto. Ayutthaya al atardecer fue mágico y la clase de cocina ahora la repito en casa." }
     ]
+  },
+
+  "ayutthaya-1d": {
+    id: "ayutthaya-1d",
+    nombre: "Ayutthaya en un día",
+    tag: "Excursión · 1 día",
+    ciudades: "Ayutthaya · desde Bangkok",
+    duracion: "1 día",
+    grupo: "12 viajeros máx.",
+    rating: "4.9",
+    reseñas: 124,
+    precioDesde: 120,
+    depositoPct: 30,
+    lede: "Una escapada desde Bangkok para descubrir la antigua capital del reino de Siam: ruinas declaradas Patrimonio de la Humanidad, templos entre raíces y un paseo en barca por el río Chao Phraya.",
+    gallery: [
+      "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1800&q=85",
+      "https://images.unsplash.com/photo-1519335183684-58cebf09099e?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1583417266784-9aab4ba2a89d?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1563492065-1a3ec2c4f8fc?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1570366583862-f91883984fde?auto=format&fit=crop&w=1600&q=85"
+    ],
+    about: [
+      "Ayutthaya fue durante 400 años una de las capitales más cosmopolitas de Asia. Hoy, sus ruinas declaradas Patrimonio de la Humanidad por la UNESCO son uno de los lugares más fotogénicos y simbólicos de Tailandia.",
+      "En esta excursión de un día desde Bangkok te llevamos a los cuatro templos imprescindibles, te invitamos a comer 'boat noodles' en el mercado local y cerramos el día con un paseo en barca por el río al atardecer.",
+      "El tour es privado (solo tu grupo), con conductor profesional y guía hablando español nativo. Salimos pronto para evitar el calor y los autobuses turísticos."
+    ],
+    incluye: [
+      "Recogida y regreso al hotel en Bangkok",
+      "Vehículo privado con aire acondicionado",
+      "Guía en español todo el día",
+      "Entradas a los 4 templos del programa",
+      "Almuerzo típico (boat noodle local)",
+      "Paseo en barca por el río al atardecer",
+      "Agua mineral y toallitas frías"
+    ],
+    noIncluye: [
+      "Bebidas alcohólicas",
+      "Propinas al guía y conductor",
+      "Seguro de viaje",
+      "Gastos personales"
+    ],
+    itinerario: [
+      { dia: "06:30", titulo: "Recogida en tu hotel de Bangkok", desc: "Empezamos antes de que la ciudad despierte. Te recogemos directamente en el lobby con un vehículo privado y agua fría. Tiempo estimado a Ayutthaya: 90 minutos." },
+      { dia: "08:30", titulo: "Wat Mahathat — el Buda entre las raíces", desc: "Empezamos por la imagen más icónica de Ayutthaya: la cabeza de Buda atrapada por las raíces de un árbol bodhi. Tu guía te contará la historia del reino de Siam y de la invasión birmana de 1767." },
+      { dia: "10:00", titulo: "Wat Ratchaburana & Wat Phra Si Sanphet", desc: "Subimos a la cripta de Ratchaburana (escalera estrecha, no apto para quienes sufren claustrofobia) y luego paseamos por las tres pagodas reales de Wat Phra Si Sanphet, reservadas para los reyes de Ayutthaya." },
+      { dia: "12:30", titulo: "Almuerzo local: boat noodle", desc: "Probarás los famosos fideos de barca en un mercado donde comen los locales. Una porción cuesta poco, así que pediremos varios sabores para compartir. Opciones vegetarianas disponibles." },
+      { dia: "14:30", titulo: "Wat Chaiwatthanaram al atardecer", desc: "Mi templo favorito de Ayutthaya. Construido en 1630, es el lugar perfecto para fotos: pagodas simétricas a orillas del río con una luz dorada al atardecer." },
+      { dia: "16:30", titulo: "Paseo en barca por el río", desc: "Subimos a una barca tradicional de cola larga y rodeamos la isla histórica de Ayutthaya viendo templos solo accesibles desde el agua." },
+      { dia: "18:00", titulo: "Regreso a Bangkok", desc: "Vuelta tranquila al hotel con paradas si las necesitas. Llegada estimada: 19:30." }
+    ],
+    departures: [
+      { fechas: "Salidas diarias · marzo 2026", dias: "Lun – Dom", precio: 120, plazas: 12, estado: "available", etiqueta: "Plazas disponibles" },
+      { fechas: "Salidas diarias · abril 2026", dias: "Lun – Dom", precio: 120, plazas: 12, estado: "available", etiqueta: "Plazas disponibles" },
+      { fechas: "Salidas diarias · mayo 2026", dias: "Lun – Dom", precio: 120, plazas: 12, estado: "available", etiqueta: "Plazas disponibles" },
+      { fechas: "Salidas diarias · julio 2026", dias: "Lun – Dom", precio: 120, plazas: 12, estado: "available", etiqueta: "Plazas disponibles" },
+      { fechas: "Salidas diarias · septiembre 2026", dias: "Lun – Dom", precio: 130, plazas: 12, estado: "available", etiqueta: "Plazas disponibles" },
+      { fechas: "Salidas diarias · noviembre 2026", dias: "Lun – Dom", precio: 140, plazas: 12, estado: "available", etiqueta: "Plazas disponibles" }
+    ],
+    faq: [
+      { q: "¿De dónde sale el tour?", a: "Te recogemos directamente en tu hotel de Bangkok a las 06:30. Si tu alojamiento está fuera del centro, te avisamos del punto de recogida más cercano sin coste extra." },
+      { q: "¿Es necesario salir tan temprano?", a: "Sí. Salimos a las 06:30 por dos razones: evitamos el tráfico de Bangkok y llegamos a los templos antes que los autobuses turísticos y el calor del mediodía." },
+      { q: "¿Es apto para niños?", a: "Totalmente. Adaptamos el ritmo a la familia, hacemos paradas según necesidad y el guía sabe contar la historia como un cuento para que los peques no se aburran." },
+      { q: "¿Puedo personalizar el itinerario?", a: "Sí. Si quieres añadir el Palacio de Verano de Bang Pa-In o el mercado flotante, escríbenos antes de reservar y reorganizamos el día." },
+      { q: "¿Cuál es el código de vestimenta?", a: "Hombros y rodillas cubiertos para entrar en los templos. Llevamos un sarong de cortesía por si se te olvida." }
+    ],
+    testimonios: [
+      { autor: "Lucía y Javier", origen: "Madrid · Marzo 2026", texto: "Esmeranda nos recomendó este tour como una excursión rápida desde Bangkok y fue de lo mejor del viaje. El guía hablaba un español impecable y nos contó historias que ningún audioguía cuenta." },
+      { autor: "Familia Ortega", origen: "Ciudad de México · Enero 2026", texto: "Viajamos con dos niños y nos preocupaba que se aburrieran. El conductor sabía cuándo parar y el guía les explicó cada templo como si fuese un cuento. Volveríamos." },
+      { autor: "Paula", origen: "Buenos Aires · Diciembre 2025", texto: "El paseo en barca al atardecer y Wat Chaiwatthanaram bañado en luz dorada nos dejaron sin palabras. Cuesta mucho menos de lo que vale." }
+    ]
   }
 };
