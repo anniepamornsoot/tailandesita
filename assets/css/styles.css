@@ -2972,6 +2972,116 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
 }
 .bw-date-back-link:hover { text-decoration: underline; }
 
+/* Calendar (flexible-date tours) */
+.bw-calendar {
+  border: 1px solid var(--c-line);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+}
+.bw-cal-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.bw-cal-nav .bw-cal-prev,
+.bw-cal-nav .bw-cal-next {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1.5px solid var(--c-line);
+  background: #fff;
+  color: var(--c-ink);
+  font-family: inherit;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .15s ease, color .15s ease;
+}
+.bw-cal-nav .bw-cal-prev:hover:not(:disabled),
+.bw-cal-nav .bw-cal-next:hover:not(:disabled) {
+  border-color: var(--c-orange);
+  color: var(--c-orange);
+}
+.bw-cal-nav .bw-cal-prev:disabled,
+.bw-cal-nav .bw-cal-next:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.bw-cal-month {
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c-ink);
+  text-transform: capitalize;
+  letter-spacing: -0.005em;
+}
+.bw-cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  padding: 6px 0 4px;
+  border-bottom: 1px solid var(--c-line);
+  margin-bottom: 6px;
+}
+.bw-cal-weekdays span {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--c-muted);
+  letter-spacing: 0.06em;
+}
+.bw-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.bw-cal-empty {
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+.bw-cal-day {
+  aspect-ratio: 1 / 1;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--c-ink);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.bw-cal-day:hover:not(:disabled) {
+  background: var(--c-cream);
+  border-color: var(--c-peach-light);
+}
+.bw-cal-day.is-disabled,
+.bw-cal-day:disabled {
+  color: var(--c-muted);
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.bw-cal-day.is-selected {
+  background: var(--c-orange);
+  border-color: var(--c-orange);
+  color: #fff;
+  font-weight: 700;
+}
+.bw-cal-day.is-selected:hover { background: var(--c-orange); border-color: var(--c-orange); color: #fff; }
+.bw-cal-help {
+  margin: 10px 0 0;
+  font-size: 0.78rem;
+  color: var(--c-muted);
+  text-align: center;
+}
+
 /* Member field */
 .bw-field {
   display: flex;

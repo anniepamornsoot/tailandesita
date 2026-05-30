@@ -141,7 +141,12 @@
     return '<span class="dep-status dep-status-' + cls + '">' + label + '</span>';
   }
   var depEl = document.getElementById('tour-departures');
-  if (depEl && tour.departures) {
+  if (tour.flexibleDate) {
+    // Hide the page-body departures section entirely for flexible-date tours.
+    var depHeader = document.getElementById('departures');
+    if (depHeader) depHeader.style.display = 'none';
+    if (depEl) depEl.style.display = 'none';
+  } else if (depEl && tour.departures) {
     depEl.innerHTML = tour.departures.map(function (d) {
       return '<div class="dep-row" data-estado="' + d.estado + '">' +
         '<div class="dep-dates"><strong>' + d.fechas + '</strong><span>' + d.dias + '</span></div>' +
@@ -163,27 +168,66 @@
 
   if (bwTitle) bwTitle.textContent = 'Reservar — ' + tour.nombre.replace(/&amp;/g, '&');
 
+  var MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  var WEEKDAYS_ES = ['L','M','X','J','V','S','D'];
+  var WEEKDAY_FULL_ES = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+  function startOfDay(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function addDays(d, n) { var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+  function minSelectableDate() { return startOfDay(addDays(new Date(), 1)); } // tomorrow
+  function formatDateES(d) { return d.getDate() + ' de ' + MONTHS_ES[d.getMonth()].toLowerCase() + ' ' + d.getFullYear(); }
+  function priceForMonth(monthIndex0) {
+    var m = monthIndex0 + 1;
+    return (tour.priceByMonth && tour.priceByMonth[m]) || tour.precioDesde;
+  }
+
   var bookingState = {
     depIndex: null,
     counts: { adultos: 1, adolescentes: 0, ninos: 0 },
     member: '',
-    showCalendar: true
+    showCalendar: true,
+    selectedDate: null
   };
+  var calState = { year: null, month: null };
 
-  // Pre-select first available departure
-  var firstAvail = (tour.departures || []).findIndex(function (d) { return d.estado !== 'full'; });
-  if (firstAvail >= 0) { bookingState.depIndex = firstAvail; bookingState.showCalendar = false; }
+  if (tour.flexibleDate) {
+    var minD = minSelectableDate();
+    calState.year = minD.getFullYear();
+    calState.month = minD.getMonth();
+  } else {
+    // Pre-select first available departure for fixed-date tours
+    var firstAvail = (tour.departures || []).findIndex(function (d) { return d.estado !== 'full'; });
+    if (firstAvail >= 0) { bookingState.depIndex = firstAvail; bookingState.showCalendar = false; }
+  }
 
   function totalParticipants() {
     return bookingState.counts.adultos + bookingState.counts.adolescentes + bookingState.counts.ninos;
   }
   function selectedDeparture() {
+    if (tour.flexibleDate) {
+      if (!bookingState.selectedDate) return null;
+      var d = bookingState.selectedDate;
+      return {
+        fechas: formatDateES(d),
+        dias: WEEKDAY_FULL_ES[d.getDay()],
+        precio: priceForMonth(d.getMonth()),
+        plazas: 12,
+        estado: 'available'
+      };
+    }
     if (bookingState.depIndex == null) return null;
     return tour.departures[bookingState.depIndex];
   }
   function priceFor(category) {
-    var dep = selectedDeparture();
-    var base = dep ? dep.precio : tour.precioDesde;
+    var base;
+    if (tour.flexibleDate) {
+      base = bookingState.selectedDate
+        ? priceForMonth(bookingState.selectedDate.getMonth())
+        : tour.precioDesde;
+    } else {
+      var dep = selectedDeparture();
+      base = dep ? dep.precio : tour.precioDesde;
+    }
     if (category === 'adolescentes') return Math.round(base * 0.85 / 10) * 10;
     if (category === 'ninos') return Math.round(base * 0.55 / 10) * 10;
     return base;
@@ -197,6 +241,12 @@
     return Math.round(lineTotal() * (tour.depositoPct || 30) / 100);
   }
   function isOversubscribed() {
+    if (tour.flexibleDate) {
+      if (!bookingState.selectedDate) return true;
+      if (totalParticipants() === 0) return true;
+      if (totalParticipants() > maxGroupSize()) return true;
+      return false;
+    }
     var dep = selectedDeparture();
     if (!dep || dep.estado === 'full') return true;
     if (totalParticipants() === 0) return true;
@@ -218,6 +268,7 @@
 
   function renderDateBlock() {
     if (!dateBlock) return;
+    if (tour.flexibleDate) return renderCalendar();
     if (bookingState.showCalendar || bookingState.depIndex == null) {
       // List of available departures
       var rows = (tour.departures || []).map(function (d, i) {
@@ -245,6 +296,56 @@
     }
   }
 
+  function renderCalendar() {
+    var min = minSelectableDate();
+    if (calState.year == null || calState.month == null) {
+      calState.year = min.getFullYear();
+      calState.month = min.getMonth();
+    }
+    var firstOfMonth = new Date(calState.year, calState.month, 1);
+    var jsDay = firstOfMonth.getDay();      // 0 = Sun
+    var offset = (jsDay + 6) % 7;           // shift so Mon = 0
+    var daysInMonth = new Date(calState.year, calState.month + 1, 0).getDate();
+
+    // Can go back as long as the previous month still has selectable days
+    var minInThisView = (min.getFullYear() === calState.year && min.getMonth() === calState.month);
+    var canGoPrev = (calState.year > min.getFullYear()) ||
+                    (calState.year === min.getFullYear() && calState.month > min.getMonth());
+
+    var cells = '';
+    for (var i = 0; i < offset; i++) cells += '<span class="bw-cal-empty"></span>';
+    for (var dn = 1; dn <= daysInMonth; dn++) {
+      var thisDate = new Date(calState.year, calState.month, dn);
+      var iso = calState.year + '-' + String(calState.month + 1).padStart(2, '0') + '-' + String(dn).padStart(2, '0');
+      var disabled = thisDate < min;
+      var isSelected = bookingState.selectedDate &&
+                       +startOfDay(bookingState.selectedDate) === +thisDate;
+      var classes = ['bw-cal-day'];
+      if (disabled) classes.push('is-disabled');
+      if (isSelected) classes.push('is-selected');
+      cells += '<button type="button" class="' + classes.join(' ') +
+        '" data-date="' + iso + '"' + (disabled ? ' disabled aria-disabled="true"' : '') + '>' +
+        dn + '</button>';
+    }
+
+    var monthLabel = MONTHS_ES[calState.month] + ' ' + calState.year;
+    dateBlock.innerHTML =
+      '<h4 class="bw-section-title">Elige tu fecha</h4>' +
+      '<div class="bw-calendar">' +
+        '<div class="bw-cal-nav">' +
+          '<button type="button" class="bw-cal-prev" id="bw-cal-prev"' +
+            (canGoPrev ? '' : ' disabled aria-disabled="true"') + ' aria-label="Mes anterior">‹</button>' +
+          '<strong class="bw-cal-month">' + monthLabel + '</strong>' +
+          '<button type="button" class="bw-cal-next" id="bw-cal-next" aria-label="Mes siguiente">›</button>' +
+        '</div>' +
+        '<div class="bw-cal-weekdays">' +
+          WEEKDAYS_ES.map(function (w) { return '<span>' + w + '</span>'; }).join('') +
+        '</div>' +
+        '<div class="bw-cal-grid">' + cells + '</div>' +
+      '</div>' +
+      '<p class="bw-cal-help">Reserva con al menos 1 día de antelación.</p>';
+  }
+
   function renderTicket() {
     if (!ticket) return;
     var dep = selectedDeparture();
@@ -266,16 +367,27 @@
       ? lines.map(function (l) { return '<div class="bw-ticket-line"><span>' + l.label + '</span><strong>' + fmtMoney(l.total) + '</strong></div>'; }).join('')
       : '<div class="bw-ticket-line bw-ticket-empty"><span>Añade al menos un participante</span></div>';
 
+    var perf;
+    if (tour.flexibleDate && bookingState.selectedDate) {
+      var sd = bookingState.selectedDate;
+      perf = '<div class="bw-ticket-perf">' +
+        '<span class="bw-ticket-date-day">' + sd.getDate() + '</span>' +
+        '<span class="bw-ticket-date-rest">' + MONTHS_ES[sd.getMonth()].toLowerCase() + ' ' + sd.getFullYear() + ' · ' + WEEKDAY_FULL_ES[sd.getDay()] + '</span>' +
+      '</div>';
+    } else {
+      perf = '<div class="bw-ticket-perf">' +
+        '<span class="bw-ticket-date-day">' + dep.fechas.split('–')[0].trim() + '</span>' +
+        '<span class="bw-ticket-date-rest">→ ' + (dep.fechas.split('–')[1] || '').trim() + '</span>' +
+      '</div>';
+    }
+
     ticket.innerHTML =
       '<article class="bw-ticket-card">' +
         '<div class="bw-ticket-stub">' +
           '<h5>' + tour.nombre + '</h5>' +
           '<p>' + tour.duracion + '</p>' +
         '</div>' +
-        '<div class="bw-ticket-perf">' +
-          '<span class="bw-ticket-date-day">' + dep.fechas.split('–')[0].trim() + '</span>' +
-          '<span class="bw-ticket-date-rest">→ ' + (dep.fechas.split('–')[1] || '').trim() + '</span>' +
-        '</div>' +
+        perf +
         '<div class="bw-ticket-body">' +
           linesHTML +
           '<div class="bw-ticket-line bw-ticket-total"><span>Total</span><strong>' + fmtMoney(lineTotal()) + ' USD</strong></div>' +
@@ -337,6 +449,29 @@
         renderWidget();
         return;
       }
+      // Calendar (flexible-date tours)
+      var calPrev = e.target.closest('#bw-cal-prev');
+      if (calPrev && !calPrev.disabled) {
+        var p = new Date(calState.year, calState.month - 1, 1);
+        calState.year = p.getFullYear();
+        calState.month = p.getMonth();
+        renderWidget();
+        return;
+      }
+      if (e.target.closest('#bw-cal-next')) {
+        var n = new Date(calState.year, calState.month + 1, 1);
+        calState.year = n.getFullYear();
+        calState.month = n.getMonth();
+        renderWidget();
+        return;
+      }
+      var day = e.target.closest('.bw-cal-day');
+      if (day && !day.disabled) {
+        var iso = day.getAttribute('data-date').split('-');
+        bookingState.selectedDate = new Date(parseInt(iso[0], 10), parseInt(iso[1], 10) - 1, parseInt(iso[2], 10));
+        renderWidget();
+        return;
+      }
     });
   }
   if (memberInput) memberInput.addEventListener('input', function () {
@@ -393,6 +528,12 @@
 
   function orderSummaryHTML() {
     var dep = selectedDeparture();
+    var dateLabel;
+    if (tour.flexibleDate && bookingState.selectedDate) {
+      dateLabel = formatDateES(bookingState.selectedDate);
+    } else {
+      dateLabel = dep ? dep.fechas : '—';
+    }
     var lines = [];
     if (bookingState.counts.adultos > 0) lines.push({ l: 'Adultos × ' + bookingState.counts.adultos, t: priceFor('adultos') * bookingState.counts.adultos });
     if (bookingState.counts.adolescentes > 0) lines.push({ l: 'Adolescentes × ' + bookingState.counts.adolescentes, t: priceFor('adolescentes') * bookingState.counts.adolescentes });
@@ -401,7 +542,7 @@
     var d = depositTotal();
     var resto = t - d;
     return '<div class="co-order">' +
-      '<div class="co-order-meta">' + tour.nombre + ' · ' + (dep ? dep.fechas : '—') + '</div>' +
+      '<div class="co-order-meta">' + tour.nombre + ' · ' + dateLabel + '</div>' +
       lines.map(function (x) { return '<div class="co-order-line"><span>' + x.l + '</span><strong>' + fmtMoney(x.t) + '</strong></div>'; }).join('') +
       '<div class="co-order-line"><span>Subtotal</span><strong>' + fmtMoney(t) + ' USD</strong></div>' +
       '<div class="co-order-line"><span>Depósito hoy (' + (tour.depositoPct || 30) + '%)</span><strong>' + fmtMoney(d) + ' USD</strong></div>' +
@@ -482,7 +623,7 @@
         '<div class="co-order co-order-receipt">' +
           '<div class="co-order-line"><span>Nº de pedido</span><strong>' + orderId + '</strong></div>' +
           '<div class="co-order-line"><span>Programa</span><strong>' + tour.nombre + '</strong></div>' +
-          '<div class="co-order-line"><span>Fechas</span><strong>' + (dep ? dep.fechas : '—') + '</strong></div>' +
+          '<div class="co-order-line"><span>Fechas</span><strong>' + (tour.flexibleDate && bookingState.selectedDate ? formatDateES(bookingState.selectedDate) : (dep ? dep.fechas : '—')) + '</strong></div>' +
           '<div class="co-order-line"><span>Viajeros</span><strong>' + totalParticipants() + '</strong></div>' +
           '<div class="co-order-line co-order-total"><span>Pagado hoy</span><strong>' + fmtMoney(depositTotal()) + ' USD</strong></div>' +
         '</div>' +
