@@ -2781,137 +2781,294 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
 
 
 /* ============================================================
-   Departures table v2 — availability merged into action
+   Departures table v3 — info only (date · price · availability)
    ============================================================ */
 .departures-table .dep-row {
   grid-template-columns: 1.6fr 1fr auto;
 }
-.dep-row .dep-action { width: auto; }
-.dep-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: 0;
-  cursor: pointer;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 0.92rem;
-  padding: 13px 22px;
-  border-radius: 999px;
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-  white-space: nowrap;
+.dep-availability {
+  justify-self: end;
 }
-.dep-cta:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255, 89, 0, 0.22);
-}
-.dep-cta-arrow {
-  display: inline-block;
-  font-size: 1rem;
-  transition: transform .15s ease;
-}
-.dep-cta:hover .dep-cta-arrow { transform: translateX(3px); }
-.dep-cta-available {
-  background: var(--c-orange);
-  color: #fff;
-}
-.dep-cta-last {
-  background: #fff;
-  color: var(--c-orange);
-  box-shadow: inset 0 0 0 2px var(--c-orange);
-}
-.dep-cta-last:hover { background: var(--c-orange); color: #fff; }
-.dep-cta-full {
-  background: #ececec;
-  color: #888;
-  cursor: not-allowed;
-  pointer-events: none;
+.dep-availability .dep-status {
+  font-size: 0.9rem;
+  padding: 10px 16px;
 }
 
 /* ============================================================
-   Sidebar book-card v2 (Iceland tour-style)
+   Sidebar booking widget (Iceland-style: counters + date +
+   member nº + ticket summary + Ir al carrito)
+   Structured as semantic sections so it ports cleanly to
+   WordPress Elementor (each .bw-section maps to a container).
    ============================================================ */
-.book-card-v2 {
-  padding: 28px 26px 24px;
-  display: flex;
-  flex-direction: column;
+.booking-widget {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-line);
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
-.book-card-v2 .book-from {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--c-muted);
-  font-weight: 600;
+.bw-header {
+  background: var(--c-ink);
+  color: #fff;
+  padding: 18px 22px;
+}
+.bw-header h3 {
   margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #fff;
 }
-.book-card-v2 .book-price {
+.bw-body { padding: 18px 22px 20px; }
+.bw-section { padding: 12px 0; }
+.bw-section + .bw-section { border-top: 1px solid var(--c-line); }
+.bw-section-title {
   font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: 2.6rem;
-  color: var(--c-orange);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  margin: 2px 0 18px;
-  font-variant-numeric: tabular-nums lining-nums;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--c-ink);
+  margin: 0 0 12px;
+  position: relative;
+  padding-bottom: 8px;
 }
-.book-card-v2 .book-price small {
-  display: inline-block;
-  margin-left: 4px;
+.bw-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 28px;
+  height: 3px;
+  background: var(--c-orange);
+  border-radius: 2px;
+}
+
+/* Participant counters */
+.bw-counter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+}
+.bw-counter-label strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--c-ink);
+  font-weight: 600;
+}
+.bw-counter-label small {
+  display: block;
   font-size: 0.78rem;
   color: var(--c-muted);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
-.book-facts {
-  list-style: none;
-  margin: 0 0 22px;
-  padding: 18px 0;
-  border-top: 1px solid var(--c-line);
-  border-bottom: 1px solid var(--c-line);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.bw-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
-.book-facts li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 0.92rem;
-}
-.book-facts .bf-ico {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
+.bw-counter-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1.5px solid var(--c-orange);
+  background: #fff;
+  color: var(--c-orange);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--c-cream);
-  border-radius: 8px;
-  font-size: 0.95rem;
+  transition: background .15s ease, color .15s ease, opacity .15s ease;
 }
-.book-facts strong {
-  display: block;
-  color: var(--c-ink);
-  font-weight: 600;
-  font-size: 0.95rem;
+.bw-counter-btn:hover:not(:disabled) {
+  background: var(--c-orange);
+  color: #fff;
 }
-.book-facts small {
-  display: block;
-  color: var(--c-muted);
-  font-size: 0.78rem;
-  margin-top: 1px;
+.bw-counter-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
 }
-.book-card-v2 .book-cta {
-  width: 100%;
+.bw-counter-val {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 700;
   font-size: 1rem;
-  padding: 14px 18px;
+  color: var(--c-ink);
+  font-variant-numeric: tabular-nums;
 }
-.book-trust {
-  margin: 14px 0 0;
-  font-size: 0.78rem;
+
+/* Date selector */
+.bw-date-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bw-date-option {
+  background: #fff;
+  border: 1.5px solid var(--c-line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  font-family: inherit;
+  transition: border-color .15s ease, background .15s ease;
+}
+.bw-date-option:hover:not(:disabled) { border-color: var(--c-orange); }
+.bw-date-option:disabled { opacity: 0.55; cursor: not-allowed; }
+.bw-date-info strong { display: block; font-size: 0.95rem; color: var(--c-ink); }
+.bw-date-info small { display: block; font-size: 0.78rem; color: var(--c-muted); margin-top: 2px; }
+.bw-date-status {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.bw-date-status-available { background: rgba(34, 139, 88, 0.10); color: #1f6f48; }
+.bw-date-status-last { background: rgba(255, 145, 0, 0.12); color: #a85a00; }
+.bw-date-status-full { background: rgba(102, 102, 102, 0.10); color: #555; }
+
+.bw-date-back {
+  background: var(--c-cream);
+  border: 1.5px solid var(--c-orange);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px;
+  font-family: inherit;
+  width: 100%;
+}
+.bw-date-back-arrow {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--c-orange);
+  line-height: 1;
+}
+.bw-date-back-label strong { display: block; font-size: 0.95rem; color: var(--c-ink); }
+.bw-date-back-label small { display: block; font-size: 0.78rem; color: var(--c-muted); margin-top: 2px; }
+.bw-date-back-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--c-orange);
+  text-decoration: none;
+}
+.bw-date-back-link:hover { text-decoration: underline; }
+
+/* Member field */
+.bw-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--c-ink-soft);
+  font-weight: 500;
+}
+.bw-field input {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 11px 13px;
+  border: 1.5px solid var(--c-line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--c-ink);
+}
+.bw-field input:focus {
+  outline: none;
+  border-color: var(--c-orange);
+  box-shadow: 0 0 0 3px rgba(255, 89, 0, 0.13);
+}
+
+/* Ticket-style booking summary */
+.bw-ticket-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--c-cream);
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+.bw-ticket-stub {
+  padding: 14px 18px;
+  border-bottom: 1.5px dashed rgba(0,0,0,0.10);
+}
+.bw-ticket-stub h5 {
+  margin: 0 0 2px;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+.bw-ticket-stub p {
+  margin: 0;
+  font-size: 0.82rem;
   color: var(--c-muted);
-  line-height: 1.5;
+}
+.bw-ticket-perf {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  color: var(--c-ink);
+  background: rgba(255, 89, 0, 0.06);
+  border-bottom: 1.5px dashed rgba(0,0,0,0.10);
+}
+.bw-ticket-date-day { font-weight: 700; }
+.bw-ticket-date-rest { color: var(--c-muted); }
+.bw-ticket-body { padding: 12px 18px 14px; }
+.bw-ticket-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 0.88rem;
+  color: var(--c-ink-soft);
+}
+.bw-ticket-line strong { font-weight: 600; color: var(--c-ink); }
+.bw-ticket-total {
+  border-top: 1px solid rgba(0,0,0,0.10);
+  margin-top: 6px;
+  padding-top: 10px;
+  font-size: 1rem;
+}
+.bw-ticket-total strong { color: var(--c-orange); font-size: 1.05rem; }
+.bw-ticket-empty {
+  font-size: 0.85rem;
+  color: var(--c-muted);
+  margin: 0;
+  padding: 6px 0;
+}
+
+/* CTA */
+.bw-cta {
+  width: 100%;
+  margin-top: 6px;
+  padding: 14px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+.bw-cta:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--c-orange);
+}
+.bw-cta-note {
+  margin: 8px 0 0;
+  font-size: 0.78rem;
+  color: #a85a00;
   text-align: center;
 }
 
@@ -2993,7 +3150,7 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
 .checkout-progress {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
   padding: 0;
   margin: 0;
@@ -3258,5 +3415,5 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   .co-dep-option { grid-template-columns: auto 1fr; }
   .co-dep-option .dep-status { grid-column: 1 / -1; justify-self: start; }
   .departures-table .dep-row { grid-template-columns: 1fr; gap: 10px; }
-  .dep-cta { width: 100%; justify-content: center; }
+  .dep-availability { justify-self: start; }
 }
