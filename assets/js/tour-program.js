@@ -80,9 +80,57 @@
       '</span><span class="faq-toggle-icon" aria-hidden="true"></span></summary>' +
       '<div class="faq-body"><p>' + f.a + '</p></div></details>';
   }).join(''));
-  if (tour.testimonios) setHTML('tour-testimonios', tour.testimonios.map(function (t) {
-    return '<blockquote><div class="t-stars">★★★★★</div><p>"' + t.texto + '"</p><footer>— ' + t.autor + ', ' + t.origen + '</footer></blockquote>';
-  }).join(''));
+  if (tour.testimonios && tour.testimonios.length) {
+    var cards = tour.testimonios.map(function (t) {
+      return '<blockquote><div class="t-stars">★★★★★</div><p>"' + t.texto + '"</p><footer>— ' + t.autor + ', ' + t.origen + '</footer></blockquote>';
+    });
+    // Render the cards twice so we can slide forward forever and
+    // snap back invisibly once we've moved a full set.
+    setHTML('tour-testimonios',
+      '<div class="testimonios-track" id="testimonios-track">' + cards.concat(cards).join('') + '</div>');
+    startTestimonialsCarousel(tour.testimonios.length);
+  }
+
+  function startTestimonialsCarousel(count) {
+    if (count < 2) return;
+    var track = document.getElementById('testimonios-track');
+    var viewport = track && track.parentElement;
+    if (!track || !viewport) return;
+    var STEP_MS = 4500;
+    var DUR = 600;
+    var i = 0;
+    var timer = null;
+
+    function advance() {
+      i++;
+      var card = track.querySelector('blockquote');
+      if (!card) return;
+      var cs = window.getComputedStyle(track);
+      var gap = parseFloat(cs.gap) || 18;
+      var cw = card.getBoundingClientRect().width;
+      var offset = (cw + gap) * i;
+      track.style.transition = 'transform ' + DUR + 'ms ease';
+      track.style.transform = 'translateX(-' + offset + 'px)';
+      if (i >= count) {
+        setTimeout(function () {
+          track.style.transition = 'none';
+          track.style.transform = 'translateX(0)';
+          i = 0;
+          void track.offsetWidth; // force reflow before next transition
+        }, DUR);
+      }
+    }
+
+    function start() { stop(); timer = setInterval(advance, STEP_MS); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    start();
+    viewport.addEventListener('mouseenter', stop);
+    viewport.addEventListener('mouseleave', start);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop(); else start();
+    });
+  }
 
   // ---------- Departures: info only (date · price · status badge), no CTAs ----------
   function statusBadge(d) {
