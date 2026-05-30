@@ -77,6 +77,42 @@ window.TAILANDESITA_TOURS = [
     imagen: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=80"
   },
   {
+    id: "bkk-templos-1d",
+    nombre: "Bangkok en un día",
+    destino: "bangkok",
+    ciudades: ["Bangkok"],
+    duracionDias: 1,
+    resumen: "Gran Palacio, Wat Pho, Wat Arun y paseo en barca por el Chao Phraya, con cena al atardecer en una azotea.",
+    precioDesde: 95,
+    minPersonas: 1,
+    maxPersonas: 12,
+    imagen: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: "mercados-flotantes-1d",
+    nombre: "Mercados flotantes y tren",
+    destino: "bangkok",
+    ciudades: ["Damnoen Saduak", "Maeklong"],
+    duracionDias: 1,
+    resumen: "Madrugón al mercado flotante de Damnoen Saduak y al mercado del tren de Maeklong, dos clásicos en una sola jornada.",
+    precioDesde: 110,
+    minPersonas: 2,
+    maxPersonas: 10,
+    imagen: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: "kanchanaburi-1d",
+    nombre: "Río Kwai y Erawan en un día",
+    destino: "kanchanaburi",
+    ciudades: ["Kanchanaburi"],
+    duracionDias: 1,
+    resumen: "Tren histórico de la muerte, puente sobre el río Kwai y baño en las cascadas turquesas de Erawan. Todo en un solo día desde Bangkok.",
+    precioDesde: 135,
+    minPersonas: 2,
+    maxPersonas: 10,
+    imagen: "https://images.unsplash.com/photo-1563492065-1a3ec2c4f8fc?auto=format&fit=crop&w=900&q=80"
+  },
+  {
     id: "ayutthaya-dia",
     nombre: "Ayutthaya en un día",
     destino: "ayutthaya",
