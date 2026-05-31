@@ -3,13 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tours — Tailandesita Travel</title>
-  <meta name="description" content="Explora todos los programas de tours por Bangkok, Phuket, Chiang Mai, Ayutthaya y Kanchanaburi. Filtra por destino, fecha, personas y duración." />
+  <title>Tours en grupo por Tailandia · Salidas fijas y privadas en español — Tailandesita Travel</title>
+  <meta name="description" content="Tours en grupo por Tailandia en 2026: salidas fijas en grupos reducidos de 12 viajeros hispanohablantes, y tours privados en grupo a medida. Bangkok, Chiang Mai, Phuket, Ayutthaya y Kanchanaburi con guía local en español." />
+  <link rel="canonical" href="https://anniepamornsoot.github.io/tailandesita/tours.html" />
+  <meta property="og:title" content="Tours en grupo por Tailandia — Tailandesita Travel" />
+  <meta property="og:description" content="Salidas en grupo fijas y tours privados en grupo por Tailandia, en español." />
+  <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es un tour en grupo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Un tour en grupo es un viaje organizado con fechas e itinerario fijos que compartes con otros viajeros. En Tailandesita los tours en grupo se hacen en grupos reducidos hispanohablantes (máximo 12 personas) con guía local en español." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuál es la diferencia entre tour en grupo y tour privado?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Un tour en grupo tiene fechas fijas y se comparte con otras personas que reservan la misma salida. Un tour privado se diseña para ti y tu grupo (familia, amigos, pareja) con fechas, hoteles y actividades a medida, sin compartir con desconocidos." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo unirme sola o solo a un tour en grupo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, la mayoría de nuestros viajeros llegan solos. Es de hecho la mejor forma de viajar a Tailandia conociendo otras personas que hablan tu idioma." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuántas personas hay en un tour en grupo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Entre 2 y 12 viajeros máximo, según el programa. Algunos tours (como el de Phi Phi) se limitan a 8 personas para no saturar las barcas. Si el grupo es menor del mínimo nos reservamos el derecho a confirmar y reembolsamos el 100%." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se reservan las plazas en un tour en grupo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Con un depósito del 30% al confirmar. El 70% restante se abona 60 días antes de la salida. Si nosotros cancelamos te devolvemos el 100% del depósito." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En qué meses se hacen tours en grupo por Tailandia?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tenemos salidas en grupo todo el año. La mejor temporada es de noviembre a marzo (clima seco y soleado). Songkran en abril y la temporada verde (junio–agosto) son también épocas únicas con menos turistas y precios más bajos." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -35,56 +78,79 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <span class="eyebrow">Programas de tours</span>
-        <h1>Tours diseñados para vivir Tailandia a tu ritmo</h1>
-        <p>Desde escapadas de fin de semana hasta grandes rutas por el país. Usa el buscador para encontrar el programa perfecto según tus fechas, grupo y días disponibles.</p>
+        <span class="eyebrow">Hub de tours en grupo · 2026</span>
+        <h1>Tours en grupo por Tailandia</h1>
+        <p>Salidas fijas en <strong>grupos reducidos hispanohablantes</strong> y <strong>tours privados en grupo a medida</strong> por Bangkok, Chiang Mai, Phuket, Ayutthaya y Kanchanaburi. Guías locales en español, hoteles boutique y un máximo de 12 viajeros por salida — para que la experiencia siga sintiéndose cercana.</p>
+        <nav class="hub-anchors" aria-label="Secciones de tours">
+          <a href="#joint">Tours con salidas fijas</a>
+          <a href="#private">Tours privados a medida</a>
+          <a href="#faq">FAQ · tours en grupo</a>
+        </nav>
       </div>
     </section>
 
-    <section id="buscar" class="search-section">
+    <section class="hub-section" id="joint">
       <div class="container">
-        <div class="search-card">
-          <form id="tour-search" class="search-form" autocomplete="off">
-            <label>
-              <span>Destino</span>
-              <select name="destino">
-                <option value="">Cualquier destino</option>
-                <option value="bangkok">Bangkok</option>
-                <option value="phuket">Phuket</option>
-                <option value="chiang-mai">Chiang Mai</option>
-                <option value="ayutthaya">Ayutthaya</option>
-                <option value="kanchanaburi">Kanchanaburi</option>
-              </select>
-            </label>
-            <label><span>Fecha de viaje</span><input type="date" name="fecha" /></label>
-            <label><span>Personas</span><input type="number" name="personas" min="1" max="30" value="2" /></label>
-            <label>
-              <span>Duración</span>
-              <select name="duracion">
-                <option value="">Cualquiera</option>
-                <option value="short">1–3 días</option>
-                <option value="mid">4–7 días</option>
-                <option value="long">8+ días</option>
-              </select>
-            </label>
-            <button type="submit" class="btn btn-primary btn-search">Sugerir tours</button>
-          </form>
-          <p id="search-summary" class="search-summary" aria-live="polite"></p>
-        </div>
+        <header class="section-head">
+          <span class="eyebrow">Salidas fijas · <span id="joint-count">—</span> programas</span>
+          <h2>Tours en grupo con fechas fijas en 2026</h2>
+          <p class="section-sub">Reserva tu plaza en una salida ya programada y viaja con otros hispanohablantes. Cada tour incluye guía local en español, hoteles boutique, traslados privados y soporte 24/7 con Esmeranda. Depósito del 30% para confirmar; te devolvemos el 100% si nosotros cancelamos.</p>
+        </header>
+        <div class="tours-grid" id="joint-grid"></div>
+      </div>
+    </section>
 
-        <div class="tours-grid" id="tours-grid"></div>
-        <div class="tours-empty" id="tours-empty" hidden>
-          <p>No encontramos un tour exacto, pero Esmeranda puede diseñar uno a tu medida.</p>
-          <a class="btn btn-primary" href="contact.html">Pedir tour a medida</a>
+    <section class="hub-section hub-section-alt" id="private">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">Tours privados · <span id="private-count">—</span> programas</span>
+          <h2>Tours privados en grupo a medida</h2>
+          <p class="section-sub">Si viajas con familia, amigos o pareja y prefieres no compartir el grupo, escoge una de nuestras rutas base y la adaptamos contigo: tus fechas, tu ritmo, tu nivel de hotel. Los tours privados se confirman tras enviar tu solicitud y diseñar un presupuesto a medida.</p>
+        </header>
+        <div class="tours-grid" id="private-grid"></div>
+      </div>
+    </section>
+
+    <section class="hub-section" id="faq">
+      <div class="container">
+        <header class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Preguntas frecuentes sobre tours en grupo por Tailandia</h2>
+        </header>
+        <div class="tour-faq-list">
+          <details class="faq-item">
+            <summary><span class="faq-q">¿Qué es un tour en grupo?</span><span class="faq-toggle-icon" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Un tour en grupo es un viaje organizado con fechas e itinerario fijos que compartes con otros viajeros. En Tailandesita los tours en grupo se hacen en <strong>grupos reducidos hispanohablantes</strong> (máximo 12 personas) con guía local en español, así que no es un autobús turístico: es una experiencia íntima en la que conoces gente que viene a Tailandia con los mismos intereses.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">¿Cuál es la diferencia entre tour en grupo y tour privado?</span><span class="faq-toggle-icon" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Un <strong>tour en grupo</strong> tiene fechas fijas y se comparte con otras personas que reservan la misma salida. Un <strong>tour privado</strong> se diseña para ti y tu grupo (familia, amigos, pareja) con fechas, hoteles y actividades a medida, sin compartir con desconocidos. El privado suele ser un 20–40% más caro por persona, pero te da total flexibilidad de ritmo.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">¿Puedo unirme sola o solo a un tour en grupo?</span><span class="faq-toggle-icon" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Sí. La mayoría de nuestros viajeros llegan solos a las salidas en grupo. De hecho es la mejor forma de viajar a Tailandia conociendo gente nueva que habla tu idioma sin las barreras de un viaje organizado masivo.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">¿Cuántas personas hay en un tour en grupo?</span><span class="faq-toggle-icon" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Entre 2 y 12 viajeros máximo, según el programa. Algunos tours (como el de Phi Phi) se limitan a 8 personas para no saturar las barcas. Si el grupo no alcanza el mínimo (normalmente 4 personas) nos reservamos el derecho a confirmar la salida; en ese caso te devolvemos el 100% del depósito o te ofrecemos pasarte a otra fecha.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">¿Cómo se reservan las plazas?</span><span class="faq-toggle-icon" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Con un <strong>depósito del 30%</strong> al confirmar. El 70% restante se abona 60 días antes de la salida. Pago seguro con tarjeta (Stripe) o transferencia bancaria. Si nosotros cancelamos por falta de grupo, te devolvemos el 100% del depósito; si cancelas tú, aplica la política indicada en cada programa.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary><span class="faq-q">¿En qué meses hay tours en grupo por Tailandia?</span><span class="faq-toggle-icon" aria-hidden="true"></span></summary>
+            <div class="faq-body"><p>Tenemos salidas en grupo prácticamente todo el año. La <strong>mejor temporada</strong> es de noviembre a marzo (clima seco y soleado). <strong>Songkran</strong> (abril) es el Año Nuevo tailandés, una experiencia única. <strong>Junio–agosto</strong> es temporada verde con lluvias cortas, menos turistas y precios más bajos. Mira las fechas exactas en cada programa.</p></div>
+          </details>
         </div>
       </div>
     </section>
 
     <section class="cta-band">
       <div class="container cta-inner">
-        <h2>¿No encuentras lo que buscas?</h2>
-        <p>Esmeranda diseña tours 100% a medida. Cuéntanos qué sueñas y recibirás una propuesta personal en 24 horas.</p>
-        <a href="contact.html" class="btn btn-light">Crear mi tour a medida</a>
+        <h2>¿No encuentras la fecha o el formato que buscas?</h2>
+        <p>Si necesitas una salida en grupo en fechas distintas, ampliar un programa o combinarlo con otro destino asiático, Esmeranda diseña tu viaje a medida en menos de 24 horas.</p>
+        <a href="contact.html" class="btn btn-light">Pedir tour a medida</a>
       </div>
     </section>
   </main>
@@ -102,7 +168,7 @@
       </div>
       <div>
         <h4>Explorar</h4>
-        <ul><li><a href="index.html">Inicio</a></li><li><a href="tours.html">Tours</a></li><li><a href="about.html">Sobre Esmeranda</a></li><li><a href="faq.html">FAQ</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contacto</a></li></ul>
+        <ul><li><a href="index.html">Inicio</a></li><li><a href="tours.html">Tours</a></li><li><a href="about.html">Sobre nosotros</a></li><li><a href="faq.html">FAQ</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contacto</a></li></ul>
       </div>
       <div>
         <h4>Destinos</h4>
@@ -120,6 +186,8 @@
   </footer>
 
   <script src="assets/js/tours-data.js"></script>
+  <script src="assets/js/group-tours-data.js"></script>
+  <script src="assets/js/tours-hub.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>

@@ -3533,3 +3533,54 @@ body.has-fullhero .site-header:not(.is-scrolled) .nav-toggle span { background: 
   .departures-table .dep-row { grid-template-columns: 1fr; gap: 10px; }
   .dep-availability { justify-self: start; }
 }
+
+/* ============================================================
+   Tours hub (tours.html) — joint + private grids + anchor row
+   ============================================================ */
+.hub-anchors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.hub-anchors a {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1.5px solid var(--c-line);
+  color: var(--c-ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color .15s ease, background .15s ease, color .15s ease;
+}
+.hub-anchors a:hover {
+  border-color: var(--c-orange);
+  color: var(--c-orange);
+}
+.hub-section {
+  padding: 56px 0;
+  scroll-margin-top: 80px;
+}
+.hub-section-alt {
+  background: var(--c-cream);
+}
+.hub-section .section-head {
+  margin-bottom: 28px;
+}
+.hub-section .section-head .section-sub {
+  max-width: 780px;
+  margin-top: 8px;
+}
+.hub-tour-card .tour-chip {
+  background: var(--c-orange);
+  color: #fff;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hub-section + .hub-section { padding-top: 0; }
+.hub-section-alt + .hub-section { padding-top: 56px; }
