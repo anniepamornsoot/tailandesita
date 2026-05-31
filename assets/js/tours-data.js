@@ -14,7 +14,8 @@ window.TAILANDESITA_TOURS = [
     precioDesde: 320,
     minPersonas: 1,
     maxPersonas: 10,
-    imagen: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80"
+    imagen: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80",
+    private: true
   },
   {
     id: "bkk-gastro-2d",
@@ -38,7 +39,8 @@ window.TAILANDESITA_TOURS = [
     precioDesde: 520,
     minPersonas: 2,
     maxPersonas: 12,
-    imagen: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80"
+    imagen: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80",
+    private: true
   },
   {
     id: "phuket-relax-3d",
@@ -62,7 +64,8 @@ window.TAILANDESITA_TOURS = [
     precioDesde: 480,
     minPersonas: 1,
     maxPersonas: 10,
-    imagen: "https://images.unsplash.com/photo-1598935898639-81586f7d2129?auto=format&fit=crop&w=900&q=80"
+    imagen: "https://images.unsplash.com/photo-1598935898639-81586f7d2129?auto=format&fit=crop&w=900&q=80",
+    private: true
   },
   {
     id: "cnx-trekking-5d",
@@ -135,7 +138,8 @@ window.TAILANDESITA_TOURS = [
     precioDesde: 210,
     minPersonas: 2,
     maxPersonas: 10,
-    imagen: "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80"
+    imagen: "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80",
+    private: true
   },
   {
     id: "kan-naturaleza-2d",
@@ -147,7 +151,8 @@ window.TAILANDESITA_TOURS = [
     precioDesde: 280,
     minPersonas: 2,
     maxPersonas: 10,
-    imagen: "https://images.unsplash.com/photo-1563492065-1a3ec2c4f8fc?auto=format&fit=crop&w=900&q=80"
+    imagen: "https://images.unsplash.com/photo-1563492065-1a3ec2c4f8fc?auto=format&fit=crop&w=900&q=80",
+    private: true
   },
   {
     id: "kan-selva-3d",
@@ -171,7 +176,8 @@ window.TAILANDESITA_TOURS = [
     precioDesde: 1650,
     minPersonas: 2,
     maxPersonas: 12,
-    imagen: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80"
+    imagen: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80",
+    private: true
   },
   {
     id: "clasica-7d",
