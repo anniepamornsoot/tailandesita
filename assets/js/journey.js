@@ -342,10 +342,25 @@
     document.getElementById('result-total').textContent = fmtMoney(price.total) + ' USD';
 
     var cta = document.getElementById('result-request-cta');
-    cta.href = 'contact.html?personas=' + state.groupSize +
-      '&duracion=' + state.duration +
-      '&mes=' + state.month +
-      '&intereses=' + encodeURIComponent(state.interests.join(','));
+    var subject = 'Solicitud tour privado · ' + groupLabel + ' · ' + state.duration + ' días · ' + MONTHS_ES[state.month - 1];
+    var body = [
+      'Hola Esme,',
+      '',
+      'Me gustaría reservar el tour privado que diseñé en el configurador:',
+      '',
+      '· Personas: ' + groupLabel,
+      '· Días: ' + state.duration,
+      '· Intereses: ' + interests,
+      '· Mes: ' + MONTHS_ES[state.month - 1] + ' 2026',
+      '· Precio estimado: ' + fmtMoney(price.perPerson) + ' USD por persona (' + fmtMoney(price.total) + ' USD total grupo)',
+      '',
+      '¿Podemos hablar para concretar fechas, hoteles y siguiente paso?',
+      '',
+      'Gracias!'
+    ].join('\n');
+    cta.href = 'mailto:hola@tailandesita.com' +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
   }
 
   showStep();
