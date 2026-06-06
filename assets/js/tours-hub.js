@@ -24,8 +24,6 @@
 
   // ---------- Joint group tour card ----------
   function buildJointCard(tour) {
-    // First non-full departure for the "Próxima salida" line
-    var next = (tour.departures || []).find(function (d) { return d.estado !== 'full'; }) || tour.departures[0];
     var img = (tour.gallery && tour.gallery[0]) || '';
     var href = 'tour-program.html?tour=' + encodeURIComponent(tour.id);
     var card = document.createElement('article');
@@ -33,18 +31,16 @@
     card.setAttribute('data-destino', tour.id);
     card.innerHTML =
       '<a class="tour-img" href="' + href + '" style="background-image:url(\'' + img + '\')" aria-label="' + tour.nombre + '">' +
-        '<span class="tour-chip">Tour en grupo · fechas fijas</span>' +
         '<span class="tour-days">' + tour.duracion + '</span>' +
       '</a>' +
       '<div class="tour-body">' +
         '<h3>' + tour.nombre + '</h3>' +
         '<p>' + tour.ciudades + '</p>' +
         '<div class="tour-meta">' +
-          (next ? '<span>Próxima salida · ' + next.fechas + '</span>' : '') +
           '<span>' + tour.grupo + '</span>' +
         '</div>' +
         '<div class="tour-footer">' +
-          '<span class="tour-price">Desde ' + fmtMoney(tour.precioDesde) + ' <small>USD / persona</small></span>' +
+          '<span class="tour-price">Desde ' + fmtMoney(tour.precioDesde) + ' <small>/ persona</small></span>' +
           '<a class="tour-link" href="' + href + '">Ver programa →</a>' +
         '</div>' +
       '</div>';
