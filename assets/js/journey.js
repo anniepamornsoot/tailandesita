@@ -14,22 +14,38 @@
   // ---------- Path tabs ----------
   var tabs = section.querySelectorAll('.journey-tab');
   var paths = section.querySelectorAll('.journey-path');
+  function activatePath(which) {
+    var target = null;
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-path') === which;
+      if (on) target = t;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    paths.forEach(function (p) {
+      var on = p.getAttribute('data-path') === which;
+      p.classList.toggle('is-active', on);
+      if (on) p.removeAttribute('hidden');
+      else p.setAttribute('hidden', '');
+    });
+    return target;
+  }
+
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
-      var which = tab.getAttribute('data-path');
-      tabs.forEach(function (t) {
-        var on = t === tab;
-        t.classList.toggle('active', on);
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      paths.forEach(function (p) {
-        var on = p.getAttribute('data-path') === which;
-        p.classList.toggle('is-active', on);
-        if (on) p.removeAttribute('hidden');
-        else p.setAttribute('hidden', '');
-      });
+      activatePath(tab.getAttribute('data-path'));
     });
   });
+
+  // If the page is loaded with #configurador, jump straight to the custom
+  // path so visitors coming from the tours page land on the calculator.
+  function openCalculatorFromHash() {
+    if ((location.hash || '').replace('#', '') !== 'configurador') return;
+    activatePath('custom');
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  openCalculatorFromHash();
+  window.addEventListener('hashchange', openCalculatorFromHash);
 
   // ---------- Modal (deposit + waitlist) ----------
   var modal = document.getElementById('journey-modal');
