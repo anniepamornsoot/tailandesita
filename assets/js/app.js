@@ -212,11 +212,14 @@
     });
   } else if (toursGrid) {
     // Grid is on a page without a search form (e.g. the homepage).
-    // The homepage section is now "Excursiones de un día", so we
-    // narrow the list to 1-day tours only.
+    // The homepage section is now "Excursiones de un día" — show
+    // the 3 cheapest 1-day tours as a teaser; the "Ver todas las
+    // excursiones" CTA above the grid links to the full catalog.
     var all = (window.TAILANDESITA_TOURS || []).slice();
-    var dayTrips = all.filter(function (t) { return t.duracionDias === 1; });
-    dayTrips.sort(function (a, b) { return (a.precioDesde || 0) - (b.precioDesde || 0); });
+    var dayTrips = all
+      .filter(function (t) { return t.duracionDias === 1; })
+      .sort(function (a, b) { return (a.precioDesde || 0) - (b.precioDesde || 0); })
+      .slice(0, 3);
     toursGrid.innerHTML = '';
     dayTrips.forEach(function (t) { toursGrid.appendChild(buildCard(t, {})); });
     var emptyEl = document.getElementById('tours-empty');
